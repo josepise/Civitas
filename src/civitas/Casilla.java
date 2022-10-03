@@ -1,16 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package civitas;
 
 public class Casilla {
     
+    private static float FACTORALQUILERCALLE=1.0f;
+    private static float FACTORALQUILERCASA=1.0f;
+    private static float FACTORALQUILERHOTEL=4.0f;
     
     private TipoCasilla tipo;
+    private MazoSorpresas mazo;
+    private Jugador jugador;
+    
     private String nombre;
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
+    
+    Casilla(String nombre)
+    {
+        this(TipoCasilla.DESCANSO,nombre,0,0,
+                0);
+    }
     
     Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra,
             float unPrecioEdificar, float unPrecioAlquilerBase)
@@ -22,12 +31,19 @@ public class Casilla {
         precioBaseAlquiler=unPrecioAlquilerBase;
     }
     
-    public String getNombre()
+    Casilla(String nombre, MazoSorpresas maz)
+    {
+        this(TipoCasilla.SORPRESA, nombre, 0,0,
+                0);
+        mazo=maz;
+    }
+   
+    String getNombre()
     {
         return (nombre);
     }
     
-    public float getPrecioCompra()
+    float getPrecioCompra()
     {
         return (precioCompra);
     }
@@ -39,7 +55,8 @@ public class Casilla {
     
     public float getPrecioAlquilerCompleto()
     {
-        float alquiler=precioBaseAlquiler*(1+numCasas+numHoteles*4);
+        float alquiler=precioBaseAlquiler*(FACTORALQUILERCALLE+numCasas
+                *FACTORALQUILERCASA+numHoteles*FACTORALQUILERHOTEL);
         return(alquiler);
     }
     
