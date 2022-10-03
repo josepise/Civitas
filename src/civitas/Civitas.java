@@ -43,9 +43,7 @@ public class Civitas {
         for(int i =0; i<4; i++)
         {
             System.out.println(dadito.tirar());
-            System.out.println("pro");
         }
     }
-    
     
 }
