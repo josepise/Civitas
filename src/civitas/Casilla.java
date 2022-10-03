@@ -6,8 +6,6 @@ package civitas;
 
 public class Casilla {
     
-    public enum TipoCasilla {CALLE, SORPRESA, DESCANSO};
-    public enum TipoSopresa {PAGARCOBRAR, PORCASAHOTEL};
     
     private TipoCasilla tipo;
     private String nombre;
