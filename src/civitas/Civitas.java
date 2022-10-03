@@ -44,6 +44,7 @@ public class Civitas {
         {
             System.out.println(dadito.tirar());
             System.out.println("pro");
+            System.out.println("Cebollas");
         }
     }
     
