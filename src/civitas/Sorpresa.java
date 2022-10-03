@@ -24,8 +24,7 @@ public class Sorpresa {
         tipo = tip;
         
     }
-    
-   
+
     private void informe(int actual, ArrayList<Jugador> todos){
         
        String cadena = "Se aplico la sopresa "+ tipo +" a " + todos.get(actual);
