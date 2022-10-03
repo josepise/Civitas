@@ -1,11 +1,13 @@
 
 package civitas;
 
+import java.util.ArrayList;
+
 public class Casilla {
     
-    private static float FACTORALQUILERCALLE=1.0f;
-    private static float FACTORALQUILERCASA=1.0f;
-    private static float FACTORALQUILERHOTEL=4.0f;
+    private static final float FACTORALQUILERCALLE=1.0f;
+    private static final float FACTORALQUILERCASA=1.0f;
+    private static final float FACTORALQUILERHOTEL=4.0f;
     
     private TipoCasilla tipo;
     private MazoSorpresas mazo;
@@ -15,15 +17,16 @@ public class Casilla {
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
     
-    Casilla(String nombre)
+    Casilla(String nomb)
     {
-        this(TipoCasilla.DESCANSO,nombre,0,0,
-                0);
+        init();
+        nombre=nomb;
     }
     
     Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra,
             float unPrecioEdificar, float unPrecioAlquilerBase)
-    {
+    {  
+        init();
         tipo=unTipo;
         nombre=unNombre;
         precioCompra=unPrecioCompra;
@@ -31,13 +34,26 @@ public class Casilla {
         precioBaseAlquiler=unPrecioAlquilerBase;
     }
     
-    Casilla(String nombre, MazoSorpresas maz)
+    Casilla(String nomb, MazoSorpresas maz)
     {
-        this(TipoCasilla.SORPRESA, nombre, 0,0,
-                0);
+        init();
+        nombre=nomb;
         mazo=maz;
     }
    
+    void init ()
+    {
+        tipo=null;
+        mazo=null;
+        jugador=null;
+        nombre="";
+        precioCompra=0;
+        precioEdificar=0;
+        precioBaseAlquiler=0;
+        numCasas=0;
+        numHoteles=0;
+    }
+    
     String getNombre()
     {
         return (nombre);
@@ -48,25 +64,33 @@ public class Casilla {
         return (precioCompra);
     }
     
-    public float getPrecioEdificar()
+    float getPrecioEdificar()
     {
         return(precioEdificar);
     }
     
-    public float getPrecioAlquilerCompleto()
+    float getPrecioAlquilerCompleto()
     {
         float alquiler=precioBaseAlquiler*(FACTORALQUILERCALLE+numCasas
                 *FACTORALQUILERCASA+numHoteles*FACTORALQUILERHOTEL);
         return(alquiler);
     }
     
-    public boolean construirCasa()
+    void informe(int iactual, ArrayList<Jugador> todos)
+    {
+        String evento="El jugador "+ todos.get(iactual) + "ha caido en la casilla"
+                      + toString();
+        Diario.getInstance().ocurreEvento(evento);
+    }
+    
+    
+    boolean construirCasa(Jugador jugador)
     {
         numCasas++;
         return(true);
     }
     
-    public boolean construirHotel()
+    boolean construirHotel()
     {
         numHoteles++;
         return(true);
