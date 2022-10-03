@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Casilla {
     
-    private static final float FACTORALQUILERCALLE=1.0f;
-    private static final float FACTORALQUILERCASA=1.0f;
-    private static final float FACTORALQUILERHOTEL=4.0f;
+    private static float FACTORALQUILERCALLE=1.0f;
+    private static float FACTORALQUILERCASA=1.0f;
+    private static float FACTORALQUILERHOTEL=4.0f;
     
     private TipoCasilla tipo;
     private MazoSorpresas mazo;
