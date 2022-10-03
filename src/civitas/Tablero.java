@@ -3,72 +3,78 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package civitas;
-import civitas.Casilla.TipoCasilla;
+
 import java.util.ArrayList;
+
 /**
  *
- * @author LG
+ * @author carlo
  */
 public class Tablero {
     
     private ArrayList<Casilla> casillas;
     private boolean porSalida;
     
-    Tablero()
-    {
-       casillas=new ArrayList(20);
-       Casilla nueva=new Casilla(TipoCasilla.CALLE,"Salida",
-               0,0,0);
-       casillas.add(nueva);
-       porSalida=false;
+    Tablero(){
+        
+        casillas = new ArrayList();
+        
+        Casilla Salida = new Casilla(TipoCasilla.CALLE, "Salida",0, 0, 0);
+        casillas.add(Salida);
+        
+        porSalida = false;
     }
     
-    private boolean correcto(int numCasilla)
-    {
-        boolean var=true;
+    private boolean correcto(int numCasilla){
         
-        if(casillas.size()>=numCasilla) var=false;
+        boolean correcto;
         
-        return (var);
+        if(numCasilla >= 0 && numCasilla <= casillas.size())
+            correcto = true;
+        else correcto = false;
+        
+        return correcto;
+        
     }
     
-    boolean computarPasoPorSalida()
-    {
-        boolean var=porSalida;
-       
-        porSalida=false;
+    boolean computarPasoPorSalida(){
         
-        return (var);
+        boolean aux = porSalida;
+        
+        porSalida = false;
+        
+        return aux;
+        
+        
     }
     
-    void añadeCasilla(Casilla casilla)
-    {
+    void añadeCasilla(Casilla casilla){
+        
         casillas.add(casilla);
-        
     }
     
-    Casilla getCasilla(int numCasilla)
-    {
-        Casilla var=null;
+    Casilla getCasilla(int numCasilla){
         
-        if(computarPasoPorSalida()) var=casillas.get(numCasilla);
-        
-        return (var);
-        
+        if(correcto(numCasilla))
+            return casillas.get(numCasilla);
+        else return null;
+       
     }
     
-    int nuevaPosicion(int actual, int tirada)
-    {
-        int var=actual+tirada;
+    int nuevaPosicion(int actual, int tirada){
         
-        if (var>=20)
-        {
-            var=var-20;
-            porSalida=true;
-        }
+        int posFinal;
         
-        return(var);
+        posFinal = (actual+tirada)%casillas.size();
+        
+        if(posFinal != actual + tirada)
+            porSalida = true;
+        
+         
+       return posFinal;
     }
+    
+    
     
     
 }
