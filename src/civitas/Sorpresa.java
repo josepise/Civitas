@@ -49,7 +49,7 @@ public class Sorpresa {
     private void aplicarAJugador_porCasaHotel(int actual, ArrayList<Jugador> todos){
         
         informe(actual, todos);
-        todos.get(actual).modificaSaldo(valor*todos.get(actual).cantidadCasasHoteles());
+       // todos.get(actual).modificaSaldo(valor*todos.get(actual).cantidadCasasHoteles());
     }
     
     public String toString(){
