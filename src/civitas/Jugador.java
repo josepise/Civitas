@@ -27,6 +27,12 @@ public class Jugador implements Comparable<Jugador> {
     private ArrayList<Casilla> propiedades;
     
     
+    final String getNombre(){
+        return nombre;
+    }
+            
+            
+    
     final float getSaldo(){
         return saldo;
     }
@@ -106,6 +112,11 @@ public class Jugador implements Comparable<Jugador> {
         
         return ret;
             
+    }
+    
+    public String toString(){
+        String cadena = "Nombre: " + nombre + " Saldo: " + saldo;
+        return cadena;
     }
     
     
