@@ -54,7 +54,7 @@ public class Sorpresa {
     {
         
         informe(actual, todos);
-        todos.get(actual).modificaSaldo(valor*todos.get(actual).cantidadCasasHoteles());
+       // todos.get(actual).modificaSaldo(valor*todos.get(actual).cantidadCasasHoteles());
     }
     
     public String toString()

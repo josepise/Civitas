@@ -36,9 +36,9 @@ public class Civitas {
         
         Tablero tab = new Tablero();
         
-        Casilla cas = new Casilla(TipoCasilla.CALLE, "calle1", 0, 0, 0);
-        Casilla cas2 = new Casilla(TipoCasilla.CALLE, "calle2", 500, 0, 0);
-        Casilla cas3 = new Casilla(TipoCasilla.CALLE, "calle3", 1000, 0, 0);
+        Casilla cas = new Casilla("calle1", 0, 0, 0);
+        Casilla cas2 = new Casilla("calle2", 500, 0, 0);
+        Casilla cas3 = new Casilla("calle3", 1000, 0, 0);
         
         tab.añadeCasilla(cas);
         tab.añadeCasilla(cas2);
@@ -77,6 +77,7 @@ public class Civitas {
                             cas2.getPrecioCompra() +
                             cas3.getPrecioCompra())/3;
         
+
         System.out.println("La casilla mas cara es " + masCara + 
                             " y las calles tienen un precio medio de " + 
                             precioMedio);
@@ -85,6 +86,7 @@ public class Civitas {
         
         for(int i = 0; i < 3; i++){
             System.out.println("La posicion final es: " + tab.nuevaPosicion(i, Dado.getInstance().tirar()));
+
         }
     }
     

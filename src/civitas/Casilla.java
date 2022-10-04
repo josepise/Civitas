@@ -20,14 +20,15 @@ public class Casilla {
     Casilla(String nomb)
     {
         init();
+        tipo=TipoCasilla.DESCANSO;
         nombre=nomb;
     }
     
-    Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra,
+    Casilla(String unNombre, float unPrecioCompra,
             float unPrecioEdificar, float unPrecioAlquilerBase)
     {  
         init();
-        tipo=unTipo;
+        tipo=TipoCasilla.CALLE;
         nombre=unNombre;
         precioCompra=unPrecioCompra;
         precioEdificar=unPrecioEdificar;
@@ -37,11 +38,12 @@ public class Casilla {
     Casilla(String nomb, MazoSorpresas maz)
     {
         init();
+        tipo=TipoCasilla.SORPRESA;
         nombre=nomb;
         mazo=maz;
     }
    
-    void init ()
+    private void init ()
     {
         tipo=null;
         mazo=null;
@@ -68,6 +70,25 @@ public class Casilla {
     {
         return(precioEdificar);
     }
+    
+    int cantidadCasasHoteles()
+    {
+        return (numCasas+numHoteles);
+    }
+    
+    boolean derruirCasas(int n,Jugador jugad)
+    {
+        boolean completo=false;
+        
+        if(esEsteElPropietario(jugad) && n<=numCasas)
+        {
+            numCasas=numCasas-n;
+            completo=true;
+        }
+        
+        return(completo);
+    }
+    
     
     float getPrecioAlquilerCompleto()
     {
@@ -96,15 +117,50 @@ public class Casilla {
         return(true);
     }
     
+    public boolean esEsteElPropietario(Jugador jugad)
+    {
+        boolean espropietario=false;
+        
+        if(jugador==jugad)
+        {
+            espropietario=true;
+        }
+        
+        return (espropietario);
+    }
+    
     public String toString()
     {
-        String enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
-               + "Edificar:" + precioEdificar + ", Alquiler base:" 
-               + precioBaseAlquiler + ", Casas:" + numCasas + ", Hoteles:"
-               + numHoteles;
+        String enunciado;
+        
+        if (jugador!=null)
+        {
+            enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
+                   + "Edificar:" + precioEdificar + ", Alquiler base:" 
+                   + precioBaseAlquiler + ", Casas:" + numCasas + ", Hoteles:"
+                   + numHoteles;
+        }
+        else
+        { 
+            enunciado="Esta calle tiene propietario con nombre:"
+                    +jugador.getNombre();
+           
+        }
         
         return(enunciado);
+    }    
+    
+    public void tramitarAlquiler(Jugador jugad)
+    {
+
+        if(!esEsteElPropietario(jugad))
+        {
+            jugad.pagaAlquiler(getPrecioAlquilerCompleto());
+            jugador.recibe(getPrecioAlquilerCompleto());
+        }
     }
+
+    
     
     
 }
