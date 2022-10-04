@@ -107,7 +107,7 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean tieneAlgoQueGestionar()
     {
-        return propiedades.size() > 0;
+        return !propiedades.isEmpty();
     }
     
     boolean pasaPorSalida()
@@ -119,6 +119,7 @@ public class Jugador implements Comparable<Jugador> {
         return true;
     }
     
+    @Override
     public int compareTo(Jugador otro)
     {
         
@@ -134,6 +135,7 @@ public class Jugador implements Comparable<Jugador> {
             
     }
     
+    @Override
     public String toString()
     {
         String cadena = "Nombre: " + nombre + " Saldo: " + saldo;

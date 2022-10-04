@@ -15,6 +15,7 @@ public class CivitasJuego {
     private int indiceJugadorActual;
     private ArrayList<Jugador> jugadores;
     private GestorEstados gestor;
+    private EstadoJuego estado;
     private MazoSorpresas mazo;
     private Tablero tablero;
     
@@ -30,7 +31,7 @@ public class CivitasJuego {
         
         gestor = new GestorEstados();
         
-        gestor.estadoInicial();
+        estado = gestor.estadoInicial();
         
         Dado.getInstance().setDebug(debug);
         
@@ -40,21 +41,22 @@ public class CivitasJuego {
         
         tablero = new Tablero();
         
-        inicializaTablero(tablero);
+        inicializaTablero(mazo);
         
-        inicializaMazoSorpresas(mazo);
+        inicializaMazoSorpresas();
         
         
     }
     
     
-    private void inicializaTablero(Tablero m){
+    private void inicializaTablero(MazoSorpresas m)
+    {
         
-        Casilla inicial = new Casilla("SALIDA", (i + 1) * 500, (i + 1) * 200, (i + 1) * 250);
+        Casilla inicial = new Casilla("SALIDA");
         
-        m.añadeCasilla(inicial);
+        tablero.añadeCasilla(inicial);
         
-        ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+        ArrayList<Casilla> casillas = new ArrayList<>();
         
         for(int i = 0; i < 14; i++){
             
@@ -67,7 +69,7 @@ public class CivitasJuego {
         
         for(int i = 1; i <= 4; i++){
             
-                Casilla sor = new Casilla(i*15 +"", mazo);
+                Casilla sor = new Casilla(i*15 +"", m);
                 casillas.add(sor);
         }
         
@@ -78,10 +80,99 @@ public class CivitasJuego {
         Collections.shuffle(casillas);
         
         for(int i = 1; i <= 19; i++){
-            m.añadeCasilla(casillas.get(i));
+            tablero.añadeCasilla(casillas.get(i));
         }
         
     }
+    
+    
+    private void inicializaMazoSorpresas()
+    {
+        
+        for(int i = 1; i <= 5; i++){
+            Sorpresa sor = new Sorpresa(TipoSorpresa.PAGARPORCOBRAR, 
+                                        "Pagar por cobrar", i*250);
+            
+            mazo.alMazo(sor);
+            
+        }
+        
+        for(int i = 1; i <= 5; i++){
+            Sorpresa sor = new Sorpresa(TipoSorpresa.PORCASAHOTEL, 
+                                        "Pagar por casa y hotel", i*250);
+            
+            mazo.alMazo(sor);
+            
+        }
+        
+        
+        mazo.barajar();
+       
+    }
+    
+    public Jugador getJugadorActual()
+    {
+        return jugadores.get(indiceJugadorActual);
+    }
+    
+    private void pasarTurno()
+    {
+        if(indiceJugadorActual != jugadores.size())
+            indiceJugadorActual++;
+        else indiceJugadorActual = 1;
+        
+    }
+    
+    
+    public void siguientePasoCompletado(OperacionJuego operacion)
+    {
+        
+        estado = gestor.siguienteEstado(jugadores.get(indiceJugadorActual),
+                        estado, operacion);
+        
+    }
+    
+    public boolean construirCasa(int ip){
+        
+        return jugadores.get(indiceJugadorActual).construirCasa(ip);
+    }
+    
+    public boolean construirHotel(int ip){
+        return jugadores.get(indiceJugadorActual).construirHotel(ip);
+
+    }
+    
+    boolean finalDelJuego(){
+        boolean fin = false;
+        
+        for(int i = 1; i<= jugadores.size(); i++){
+            if(jugadores.get(i).getSaldo() < 0)
+                fin = true;
+        }
+        
+        return true;
+    }
+    
+    private ArrayList<Jugador> ranking(){
+        
+        ArrayList<Jugador> ranking = new ArrayList<>();
+        ranking = jugadores;
+        
+        ranking.sort((o1, o2) -> o1.compareTo(o2));
+        
+        return ranking;
+    }
+    
+    private void contabilizarPasosPorSalida(){
+        
+        if(tablero.computarPasoPorSalida()){
+            
+            jugadores.get(indiceJugadorActual).pasaPorSalida();
+            
+        }
+    }
+    
+    
     
     
 }
