@@ -69,6 +69,11 @@ public class Casilla {
         return(precioEdificar);
     }
     
+    int cantidadCasasHoteles()
+    {
+        return (numCasas+numHoteles);
+    }
+    
     float getPrecioAlquilerCompleto()
     {
         float alquiler=precioBaseAlquiler*(FACTORALQUILERCALLE+numCasas
@@ -96,15 +101,50 @@ public class Casilla {
         return(true);
     }
     
+    public boolean esEsteElPropietario(Jugador jugad)
+    {
+        boolean espropietario=false;
+        
+        if(jugador==jugad)
+        {
+            espropietario=true;
+        }
+        
+        return (espropietario);
+    }
+    
     public String toString()
     {
-        String enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
-               + "Edificar:" + precioEdificar + ", Alquiler base:" 
-               + precioBaseAlquiler + ", Casas:" + numCasas + ", Hoteles:"
-               + numHoteles;
+        String enunciado;
+        
+        if (jugador!=null)
+        {
+            enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
+                   + "Edificar:" + precioEdificar + ", Alquiler base:" 
+                   + precioBaseAlquiler + ", Casas:" + numCasas + ", Hoteles:"
+                   + numHoteles;
+        }
+        else
+        { 
+            enunciado="Esta calle tiene propietario con nombre:"
+                    +jugador.getNombre();
+           
+        }
         
         return(enunciado);
+    }    
+    
+    public void tramitarAlquiler(Jugador jugad)
+    {
+
+        if(!esEsteElPropietario(jugad))
+        {
+            jugad.pagaAlquiler(getPrecioAlquilerCompleto());
+            jugador.recibe(getPrecioAlquilerCompleto());
+        }
     }
+
+    
     
     
 }
