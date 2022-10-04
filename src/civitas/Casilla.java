@@ -20,14 +20,15 @@ public class Casilla {
     Casilla(String nomb)
     {
         init();
+        tipo=TipoCasilla.DESCANSO;
         nombre=nomb;
     }
     
-    Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra,
+    Casilla(String unNombre, float unPrecioCompra,
             float unPrecioEdificar, float unPrecioAlquilerBase)
     {  
         init();
-        tipo=unTipo;
+        tipo=TipoCasilla.CALLE;
         nombre=unNombre;
         precioCompra=unPrecioCompra;
         precioEdificar=unPrecioEdificar;
@@ -37,6 +38,7 @@ public class Casilla {
     Casilla(String nomb, MazoSorpresas maz)
     {
         init();
+        tipo=TipoCasilla.SORPRESA;
         nombre=nomb;
         mazo=maz;
     }

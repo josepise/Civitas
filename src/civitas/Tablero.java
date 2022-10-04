@@ -19,7 +19,7 @@ public class Tablero {
         
         casillas = new ArrayList();
         
-        Casilla Salida = new Casilla(TipoCasilla.CALLE, "Salida",0, 0, 0);
+        Casilla Salida = new Casilla( "Salida",0, 0, 0);
         casillas.add(Salida);
         
         porSalida = false;

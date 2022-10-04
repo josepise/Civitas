@@ -36,9 +36,9 @@ public class Civitas {
         
         Tablero tab = new Tablero();
         
-        Casilla cas = new Casilla(TipoCasilla.CALLE, "calle1", 0, 0, 0);
-        Casilla cas2 = new Casilla(TipoCasilla.CALLE, "calle2", 500, 0, 0);
-        Casilla cas3 = new Casilla(TipoCasilla.CALLE, "calle3", 1000, 0, 0);
+        Casilla cas = new Casilla("calle1", 0, 0, 0);
+        Casilla cas2 = new Casilla("calle2", 500, 0, 0);
+        Casilla cas3 = new Casilla("calle3", 1000, 0, 0);
         
         tab.añadeCasilla(cas);
         tab.añadeCasilla(cas2);
