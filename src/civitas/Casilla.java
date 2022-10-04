@@ -41,7 +41,7 @@ public class Casilla {
         mazo=maz;
     }
    
-    void init ()
+    private void init ()
     {
         tipo=null;
         mazo=null;
