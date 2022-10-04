@@ -27,23 +27,34 @@ public class Jugador implements Comparable<Jugador> {
     private ArrayList<Casilla> propiedades;
     
     
-    final String getNombre(){
+    Jugador(String nom){
+        nombre = nom;
+        casillaActual = 0;
+        puedeComprar = false;
+        saldo = 0;
+    }
+    
+    final String getNombre()
+    {
         return nombre;
     }
             
             
     
-    final float getSaldo(){
+    final float getSaldo()
+    {
         return saldo;
     }
     
-    private boolean existeLaPropiedad(int ip){
+    private boolean existeLaPropiedad(int ip)
+    {
         
         return (propiedades.size() <= ip);
         
     }
     
-    boolean puedeComprarCasilla(){
+    boolean puedeComprarCasilla()
+    {
         boolean aux = puedeComprar;
         
         puedeComprar = true;
@@ -51,7 +62,8 @@ public class Jugador implements Comparable<Jugador> {
         return aux;
     }
     
-    boolean paga(float cantidad){
+    boolean paga(float cantidad)
+    {
         boolean aux;
         
         aux = modificaSaldo(cantidad*(-1));
@@ -59,22 +71,26 @@ public class Jugador implements Comparable<Jugador> {
         return aux;
     }
     
-    boolean pagaAlquiler(float cantidad){
+    boolean pagaAlquiler(float cantidad)
+    {
         return paga(cantidad);
     }
     
-    boolean recibe(float cantidad){
+    boolean recibe(float cantidad)
+    {
         return modificaSaldo(cantidad);
     }
     
-    boolean modificaSaldo(float cantidad){
+    boolean modificaSaldo(float cantidad)
+    {
         saldo = saldo + cantidad;
         Diario.getInstance().ocurreEvento("El saldo de " + nombre + "ha "
                 + " cambiado a " + saldo);
         return true;
     }
     
-    boolean moverACasilla(int c){
+    boolean moverACasilla(int c)
+    {
         casillaActual = c;
         puedeComprar = false;
         Diario.getInstance().ocurreEvento("El jugador " + nombre + " esta ahora"
@@ -82,17 +98,20 @@ public class Jugador implements Comparable<Jugador> {
         return true;
     }
     
-    boolean puedoGastar(float precio){
+    boolean puedoGastar(float precio)
+    {
         
         return saldo <= precio;
         
     }
     
-    boolean tieneAlgoQueGestionar(){
+    boolean tieneAlgoQueGestionar()
+    {
         return propiedades.size() > 0;
     }
     
-    boolean pasaPorSalida(){
+    boolean pasaPorSalida()
+    {
         recibe(PasoPorSalida);
         Diario.getInstance().ocurreEvento("El jugador " + nombre + " pasa por"
                 + " la salida");
@@ -100,7 +119,8 @@ public class Jugador implements Comparable<Jugador> {
         return true;
     }
     
-    public int compareTo(Jugador otro){
+    public int compareTo(Jugador otro)
+    {
         
         int ret;
         
@@ -114,7 +134,8 @@ public class Jugador implements Comparable<Jugador> {
             
     }
     
-    public String toString(){
+    public String toString()
+    {
         String cadena = "Nombre: " + nombre + " Saldo: " + saldo;
         return cadena;
     }
