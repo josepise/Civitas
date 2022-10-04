@@ -74,6 +74,20 @@ public class Casilla {
         return (numCasas+numHoteles);
     }
     
+    boolean derruirCasas(int n,Jugador jugad)
+    {
+        boolean completo=false;
+        
+        if(esEsteElPropietario(jugad) && n<=numCasas)
+        {
+            numCasas=numCasas-n;
+            completo=true;
+        }
+        
+        return(completo);
+    }
+    
+    
     float getPrecioAlquilerCompleto()
     {
         float alquiler=precioBaseAlquiler*(FACTORALQUILERCALLE+numCasas
