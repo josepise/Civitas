@@ -11,7 +11,7 @@ public class Casilla {
     
     private TipoCasilla tipo;
     private MazoSorpresas mazo;
-    private Jugador jugador;
+    private Jugador propietario;
     
     private String nombre;
     private float precioCompra, precioEdificar, precioBaseAlquiler;
@@ -47,7 +47,7 @@ public class Casilla {
     {
         tipo=null;
         mazo=null;
-        jugador=null;
+        propietario=null;
         nombre="";
         precioCompra=0;
         precioEdificar=0;
@@ -121,7 +121,7 @@ public class Casilla {
     {
         boolean espropietario=false;
         
-        if(jugador==jugad)
+        if(propietario==jugad)
         {
             espropietario=true;
         }
@@ -133,7 +133,7 @@ public class Casilla {
     {
         String enunciado;
         
-        if (jugador!=null)
+        if (propietario!=null)
         {
             enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
                    + "Edificar:" + precioEdificar + ", Alquiler base:" 
@@ -143,7 +143,7 @@ public class Casilla {
         else
         { 
             enunciado="Esta calle tiene propietario con nombre:"
-                    +jugador.getNombre();
+                    +propietario.getNombre();
            
         }
         
@@ -156,13 +156,13 @@ public class Casilla {
         if(!esEsteElPropietario(jugad))
         {
             jugad.pagaAlquiler(getPrecioAlquilerCompleto());
-            jugador.recibe(getPrecioAlquilerCompleto());
+            propietario.recibe(getPrecioAlquilerCompleto());
         }
     }
     
     public boolean tienePropietario()
     {
-        return jugador!=null;
+        return propietario!=null;
     }
     
     
