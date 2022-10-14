@@ -159,7 +159,11 @@ public class Casilla {
             jugador.recibe(getPrecioAlquilerCompleto());
         }
     }
-
+    
+    public boolean tienePropietario()
+    {
+        return jugador!=null;
+    }
     
     
     
