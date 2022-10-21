@@ -151,6 +151,11 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
+    public int getCasillaActual(){
+        return casillaActual;
+    }
+    
+    
     public boolean comprar (Casilla titulo)
     {
         boolean result=false;
