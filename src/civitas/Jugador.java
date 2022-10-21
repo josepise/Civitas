@@ -66,6 +66,10 @@ public class Jugador implements Comparable<Jugador> {
         return puedeComprar;
     }
     
+    int getCasillaActual() {
+        return casillaActual;
+    }
+    
     boolean paga(float cantidad)
     {
         boolean aux;
@@ -199,7 +203,7 @@ public class Jugador implements Comparable<Jugador> {
         
         return result;
     }
-    
+
     
     private boolean puedoEdificarHotel(Casilla propiedad)
     {
