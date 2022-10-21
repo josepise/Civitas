@@ -153,6 +153,12 @@ public class CivitasJuego {
         return true;
     }
     
+    public boolean finDelJuego(){
+        
+        boolean fin = finalDelJuego();
+        
+        return fin;
+    }
     private ArrayList<Jugador> ranking(){
         
         ArrayList<Jugador> ranking = new ArrayList<>();
@@ -161,6 +167,11 @@ public class CivitasJuego {
         ranking.sort((o1, o2) -> o1.compareTo(o2));
         
         return ranking;
+    }
+    
+    public ArrayList<Jugador> ranking_publico(){
+        
+        return ranking();
     }
     
     private void contabilizarPasosPorSalida(){
@@ -221,7 +232,7 @@ public class CivitasJuego {
         Casilla casilla = tablero.getCasilla(numCasillaActual);
         boolean res = jugadorActual.comprar(casilla);
         
-       
+       return res;
         
     }
     

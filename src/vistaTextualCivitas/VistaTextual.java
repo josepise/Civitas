@@ -71,5 +71,29 @@ public class VistaTextual implements Vista {
                           tab+"Valor erróneo");
     return opcion;
   }
+  
+  public void actualiza(){
+      
+      if(juegoModel.finDelJuego()){
+          
+          ArrayList<Jugador> ranking = juegoModel.ranking_publico();
+          int k = 1;
+          
+          
+          for(Jugador jugador:ranking){
+              
+              System.out.println("Jugador numero " + k + ": " + 
+                                  jugador.toString());
+          }
+      }else{
+          System.out.println("Jugador actual: " + juegoModel.getJugadorActual());
+          
+      }
+      
+      
+      
+      
+  }
+  
 
 }
