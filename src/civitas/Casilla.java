@@ -71,6 +71,16 @@ public class Casilla {
         return(precioEdificar);
     }
     
+    int getNumCasas()
+    {
+        return(numCasas);
+    }
+    
+    int getNumHoteles()
+    {
+        return(numHoteles);
+    }
+    
     int cantidadCasasHoteles()
     {
         return (numCasas+numHoteles);
@@ -111,10 +121,11 @@ public class Casilla {
         return(true);
     }
     
-    boolean construirHotel()
+    boolean construirHotel(Jugador jugador)
     {
+        jugador.paga(precioEdificar);
         numHoteles++;
-        return(true);
+        return true;
     }
     
     public boolean esEsteElPropietario(Jugador jugad)
@@ -165,6 +176,52 @@ public class Casilla {
         return propietario!=null;
     }
     
+    
+    boolean comprar(Jugador jugador)
+    {
+       propietario=jugador;
+        
+       return (propietario.paga(precioCompra));
+    }
+    
+    void recibeJugador (int actual, ArrayList<Jugador> todos)
+    {
+       switch (tipo) 
+       {
+            case CALLE:
+                recibeJugador_calle(actual,todos);
+                break;
+            case SORPRESA:
+                recibeJugador_calle(actual,todos);
+                break;
+            case DESCANSO:
+                informe(actual,todos);
+                break;
+        }
+    }
+    
+    void recibeJugador_calle (int actual, ArrayList<Jugador> todos)
+    {
+        informe(actual,todos);
+        
+        Jugador jugador=todos.get(actual);
+        
+        if(!tienePropietario())
+        {
+            jugador.puedeComprarCasilla();
+        }
+        else
+        {
+            tramitarAlquiler(jugador);
+        }
+        
+        
+    }
+    
+    void recibeJugador_sorpresa (int actual, ArrayList<Jugador> todos)
+    {
+        
+    }
     
     
 }

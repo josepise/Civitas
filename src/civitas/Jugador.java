@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Jugador implements Comparable<Jugador> {
     
     private static final int CasasMax = 4;
-    private static final int PorHotel = 4;
+    private static final int CasasPorHotel = 4;
     private static final int HotelesMax = 4;
     private static final float PasoPorSalida = 1000;
     
@@ -38,8 +38,7 @@ public class Jugador implements Comparable<Jugador> {
     {
         return nombre;
     }
-            
-            
+                
     
     final float getSaldo()
     {
@@ -60,6 +59,11 @@ public class Jugador implements Comparable<Jugador> {
         puedeComprar = true;
         
         return aux;
+    }
+    
+    boolean getPuedeComprar()
+    {
+        return puedeComprar;
     }
     
     boolean paga(float cantidad)
@@ -143,12 +147,72 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
+    public boolean comprar (Casilla titulo)
+    {
+        boolean result=false;
+        
+        if(puedeComprarCasilla())
+        {
+            float precio=titulo.getPrecioCompra();
+            
+            if(puedoGastar(precio))
+            {
+                result=titulo.comprar(this);
+                
+                propiedades.add(titulo);
+                
+                Diario.getInstance().ocurreEvento("El jugador "+nombre+
+                        " compra la propiedad "+titulo.getNombre());
+                
+                puedeComprar=false;
+            }
+            else
+            {
+                Diario.getInstance().ocurreEvento("El jugador "+nombre+
+                        "no tiene saldo para comprar la propiedad "+titulo.getNombre());
+            }
+        }
+        
+        return (result);
+    }
+    
+    boolean construirHotel(int ip)
+    {
+        boolean result=false;
+        
+        if(existeLaPropiedad(ip))
+        {
+            Casilla propiedad=propiedades.get(ip);
+            
+            boolean puedoEdificarHotel=puedoEdificarHotel(propiedad);
+            
+            if(puedoEdificarHotel)
+            {
+                result=propiedad.construirHotel(this);
+                
+                propiedad.derruirCasas(CasasPorHotel,this);
+                
+                Diario.getInstance().ocurreEvento("El jugador "+ nombre
+                + " construye hotel en la propiedad "+ propiedad.getNombre());
+            }
+        }
+    }
     
     
+    private boolean puedoEdificarHotel(Casilla propiedad)
+    {
+        boolean puedoEdificarHotel=false;
+        
+        float precio=propiedad.getPrecioEdificar();
+        
+        if(puedoGastar(precio)&& propiedad.getNumHoteles()<HotelesMax
+            && propiedad.getNumCasas()>=CasasPorHotel)
+        {
+            puedoEdificarHotel=true;
+        }
+        
+        return puedoEdificarHotel;
+    }
     
-    
-    
-    
-    
-    
+   
 }
