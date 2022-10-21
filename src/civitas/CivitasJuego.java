@@ -15,7 +15,7 @@ public class CivitasJuego {
     private int indiceJugadorActual;
     private ArrayList<Jugador> jugadores;
     private GestorEstados gestor;
-    private EstadoJuego estado;
+    private EstadosJuego estado;
     private MazoSorpresas mazo;
     private Tablero tablero;
     
