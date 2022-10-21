@@ -31,7 +31,7 @@ public class CivitasJuego {
         
         gestor = new GestorEstados();
         
-        estado = gestor.estadoInicial();
+        estado = gestor.estadoIncial();
         
         Dado.getInstance().setDebug(debug);
         

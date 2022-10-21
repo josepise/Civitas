@@ -1,0 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package civitas;
+
+/**
+ *
+ * @author carlo
+ */
+public class GestorEstados {
+    
+    
+    public EstadosJuego estadoIncial(){
+        
+        EstadosJuego est = EstadosJuego.INICIO_TURNO;
+        
+        return est;
+    }
+            
+}
