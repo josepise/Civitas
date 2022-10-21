@@ -196,6 +196,8 @@ public class Jugador implements Comparable<Jugador> {
                 + " construye hotel en la propiedad "+ propiedad.getNombre());
             }
         }
+        
+        return result;
     }
     
     
