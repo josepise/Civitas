@@ -8,6 +8,7 @@ package vistaTextualCivitas;
 
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
+import civitas.OperacionJuego;
 import controladorCivitas.Respuesta;
 
 public interface Vista {

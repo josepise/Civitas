@@ -2,6 +2,7 @@ package vistaTextualCivitas;
 
 import civitas.Casilla;
 import civitas.CivitasJuego;
+import civitas.CivitasJuego;
 import civitas.Diario;
 import civitas.OperacionJuego;
 import controladorCivitas.Respuesta;
