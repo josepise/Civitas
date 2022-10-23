@@ -117,8 +117,12 @@ public class Casilla {
     
     boolean construirCasa(Jugador jugador)
     {
+        boolean construido;
+        
+        construido=jugador.paga(precioEdificar);
         numCasas++;
-        return(true);
+        
+        return construido;
     }
     
     boolean construirHotel(Jugador jugador)
@@ -220,6 +224,11 @@ public class Casilla {
     
     void recibeJugador_sorpresa (int actual, ArrayList<Jugador> todos)
     {
+        Sorpresa sorpresa= mazo.siguiente();
+        
+        informe(actual, todos);
+        
+        sorpresa.aplicarAJugador(actual, todos);
         
     }
     
