@@ -5,6 +5,7 @@ import civitas.CivitasJuego;
 import civitas.CivitasJuego;
 import civitas.Diario;
 import civitas.OperacionJuego;
+import civitas.Jugador;
 import controladorCivitas.Respuesta;
 import civitas.OperacionInmobiliaria;
 import civitas.Jugador;
@@ -58,7 +59,8 @@ public class VistaTextual implements Vista {
     return numero;
   }
 
-  int menu (String titulo, ArrayList<String> lista) {
+  int menu (String titulo, ArrayList<String> lista) 
+  {
     String tab = "  ";
     int opcion;
     System.out.println (titulo);
@@ -72,7 +74,8 @@ public class VistaTextual implements Vista {
     return opcion;
   }
   
-  public void actualiza(){
+  public void actualiza()
+  {
       
       if(juegoModel.finDelJuego()){
           
@@ -88,12 +91,75 @@ public class VistaTextual implements Vista {
       }else{
           System.out.println("Jugador actual: " + juegoModel.getJugadorActual());
           
+      }  
+  }
+  
+  
+ 
+  public Respuesta comprar()
+  {
+      String cadena;
+      Respuesta resp;
+      do{
+          System.out.println("¿Desea comprar la calle? Si/No");
+          cadena=in.nextLine();
+      
+      }while(cadena!="Si" || cadena !="No");
+      
+      if(cadena=="Si")
+      {
+          resp=Respuesta.SI;
+      }
+      else
+      {
+          resp=Respuesta.NO;
       }
       
+      return resp;
+  }
+  
+  
+  public OperacionInmobiliaria elegirOperacion()
+  {
+      ArrayList<String> operaciones=new ArrayList<>();
+      OperacionInmobiliaria actuacion;
       
+      operaciones.add("CONSTRUIR_CASA");
+      operaciones.add("CONSTRUIR_HOTEL");
+      operaciones.add("TERMINAR");
+      
+      int num_op=menu("¿Que gestión desea realizar?",operaciones);
+      
+      
+      switch (num_op) {
+          case 0:
+              actuacion=OperacionInmobiliaria.CONSTRUIR_CASA;
+              break;
+          case 1:
+              actuacion=OperacionInmobiliaria.CONSTRUIR_HOTEL;
+              break;
+          default:
+              actuacion=OperacionInmobiliaria.TERMINAR;
+              break;
+      }
+      
+    return actuacion;  
+  }
+  
+  public int elegirPropiedad()
+  {
+      int propiedad;
+      ArrayList<String> propiedades=new ArrayList<>();
+      
+      for(int i=0; i< juegoModel.getJugadorActual().getPropiedades().size();i++)
+      {
+          propiedades.add(juegoModel.getJugadorActual().getPropiedades().get(i).toString());
+      }
+      
+      propiedad=menu("¿Sobre que propiedad desea realizar la gestion",
+              propiedades);
       
       
   }
-  
 
 }

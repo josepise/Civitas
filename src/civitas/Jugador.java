@@ -79,6 +79,11 @@ public class Jugador implements Comparable<Jugador> {
         return aux;
     }
     
+    public final ArrayList<Casilla> getPropiedades()
+    {
+        return propiedades;
+    }
+    
     boolean pagaAlquiler(float cantidad)
     {
         return paga(cantidad);
