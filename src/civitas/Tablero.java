@@ -28,7 +28,8 @@ public class Tablero {
     private boolean correcto(int numCasilla){
         
         boolean correcto;
-        
+        System.out.println("Num_Casilla  "+ numCasilla );
+        System.out.println(casillas.size());
         if(numCasilla >= 0 && numCasilla <= casillas.size())
             correcto = true;
         else correcto = false;

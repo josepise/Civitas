@@ -50,7 +50,7 @@ public class Dado {
     
     int quienEmpieza(int n)
     {
-        return(random.nextInt(n)+1);
+        return(random.nextInt(n));
     }
     
     void setDebug(boolean d)

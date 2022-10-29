@@ -22,13 +22,13 @@ public class CivitasJuego {
     public CivitasJuego(ArrayList<String> nombres, boolean debug)
     {
         
-        jugadores = new ArrayList<Jugador>();
+        jugadores = new ArrayList<>();
         
         for(int i = 0; i < nombres.size(); i++){
             Jugador j = new Jugador(nombres.get(i));
             jugadores.add(j);
         }
-        
+               
         gestor = new GestorEstados();
         
         estado = gestor.estadoInicial();
@@ -79,7 +79,7 @@ public class CivitasJuego {
         
         Collections.shuffle(casillas);
         
-        for(int i = 1; i <= 19; i++){
+        for(int i = 0; i < casillas.size(); i++){
             tablero.añadeCasilla(casillas.get(i));
         }
         
@@ -117,9 +117,10 @@ public class CivitasJuego {
     
     private void pasarTurno()
     {
-        if(indiceJugadorActual != jugadores.size())
+        if(indiceJugadorActual < jugadores.size()-1)
             indiceJugadorActual++;
-        else indiceJugadorActual = 1;
+       
+        else indiceJugadorActual = 0;
         
     }
     
@@ -145,12 +146,13 @@ public class CivitasJuego {
     boolean finalDelJuego(){
         boolean fin = false;
         
-        for(int i = 1; i<= jugadores.size(); i++){
-            if(jugadores.get(i).getSaldo() < 0)
+        for(int i = 0; i< jugadores.size(); i++)
+        {
+            if(jugadores.get(i).getSaldo() < 0.0)
                 fin = true;
         }
         
-        return true;
+        return fin;
     }
     
     public boolean finDelJuego(){
@@ -202,7 +204,7 @@ public class CivitasJuego {
     {
         
         Jugador jugadorActual = getJugadorActual();
-        
+       
         OperacionJuego operacion = gestor.siguienteOperacion(jugadorActual, estado);
         
         switch (operacion)
@@ -228,8 +230,9 @@ public class CivitasJuego {
         
         Jugador jugadorActual = getJugadorActual();
         int numCasillaActual = jugadorActual.getCasillaActual();
-        
+        System.out.println("Comprando");
         Casilla casilla = tablero.getCasilla(numCasillaActual);
+        System.out.println(casilla.toString());
         boolean res = jugadorActual.comprar(casilla);
         
        return res;

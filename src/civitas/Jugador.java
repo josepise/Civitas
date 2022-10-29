@@ -31,7 +31,8 @@ public class Jugador implements Comparable<Jugador> {
         nombre = nom;
         casillaActual = 0;
         puedeComprar = false;
-        saldo = 0;
+        saldo = 7500;
+        propiedades=new ArrayList<>();
     }
     
     final String getNombre()
@@ -73,8 +74,9 @@ public class Jugador implements Comparable<Jugador> {
     boolean paga(float cantidad)
     {
         boolean aux;
-        
-        aux = modificaSaldo(cantidad*(-1));
+        cantidad=cantidad*(-1);
+        System.out.println("Pagando funcion pagar");
+        aux = modificaSaldo(cantidad);
         
         return aux;
     }
@@ -97,6 +99,7 @@ public class Jugador implements Comparable<Jugador> {
     boolean modificaSaldo(float cantidad)
     {
         saldo = saldo + cantidad;
+        System.out.println(saldo);
         Diario.getInstance().ocurreEvento("El saldo de " + nombre + "ha "
                 + " cambiado a " + saldo);
         return true;
@@ -113,8 +116,12 @@ public class Jugador implements Comparable<Jugador> {
     
     boolean puedoGastar(float precio)
     {
-        
-        return saldo <= precio;
+        boolean ok=false;
+        System.out.println("El saldo es bolsonaro" + saldo);
+        if(saldo<=precio)
+            ok=true;
+                    
+        return ok;
         
     }
     
@@ -133,7 +140,7 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    boolean contruirCasa (int ip)
+    boolean construirCasa (int ip)
     {
         boolean result=false;
         boolean existe=existeLaPropiedad(ip);
@@ -184,13 +191,15 @@ public class Jugador implements Comparable<Jugador> {
     public boolean comprar (Casilla titulo)
     {
         boolean result=false;
-        
+        float precio;
+        System.out.println("Tus muertos Funcion comprar jugador");
         if(puedeComprarCasilla())
         {
-            float precio=titulo.getPrecioCompra();
-            
+            precio=titulo.getPrecioCompra();
+            System.out.println("COMAR Funcion comprar jugador");
             if(puedoGastar(precio))
             {
+                System.out.println("Troncar Funcion comprar jugador");
                 result=titulo.comprar(this);
                 
                 propiedades.add(titulo);

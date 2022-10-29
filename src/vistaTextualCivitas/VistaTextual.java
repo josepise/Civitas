@@ -100,13 +100,16 @@ public class VistaTextual implements Vista {
   {
       String cadena;
       Respuesta resp;
+      boolean ok=false;
       do{
           System.out.println("¿Desea comprar la calle? Si/No");
           cadena=in.nextLine();
       
-      }while(cadena!="Si" || cadena !="No");
+          if(cadena.contentEquals("Si")|| cadena.contentEquals("No"))
+              ok=true;
+      }while(!ok);
       
-      if(cadena=="Si")
+      if(cadena.contentEquals("Si"))
       {
           resp=Respuesta.SI;
       }
@@ -159,7 +162,21 @@ public class VistaTextual implements Vista {
       propiedad=menu("¿Sobre que propiedad desea realizar la gestion",
               propiedades);
       
-      
+      return propiedad;
   }
 
+  public void mostrarSiguienteOperacion(OperacionJuego operacion)
+  {
+      System.out.println("La siguiente operacion es : " + operacion);
+  }
+  
+  public void mostrarEventos()
+  {
+      
+       while(Diario.getInstance().eventosPendientes())
+       {
+           System.out.println(Diario.getInstance().leerEvento());
+       }
+       
+  }
 }

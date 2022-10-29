@@ -147,8 +147,9 @@ public class Casilla {
     public String toString()
     {
         String enunciado;
+        System.out.println(propietario);
         
-        if (propietario!=null)
+        if (propietario==null)
         {
             enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
                    + "Edificar:" + precioEdificar + ", Alquiler base:" 
@@ -184,7 +185,7 @@ public class Casilla {
     boolean comprar(Jugador jugador)
     {
        propietario=jugador;
-        
+        System.out.println("Paga Funcion comprar Casilla");
        return (propietario.paga(precioCompra));
     }
     

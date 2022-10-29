@@ -8,13 +8,19 @@ public class Civitas {
 
    
     public static void main(String[] args) {
-    /*    
+   
+        
+        Jugador ju=new Jugador("POllito");
+        
+        System.out.println(ju.getSaldo());
+        
+        /*    
        for(int i = 0; i < 100; i++){
            
           System.out.println(Dado.getInstance().quienEmpieza(4));
            
        }
-     */  
+     
        Dado.getInstance().setDebug(true);
        
        for(int i = 0; i < 10; i++)
@@ -88,6 +94,7 @@ public class Civitas {
             System.out.println("La posicion final es: " + tab.nuevaPosicion(i, Dado.getInstance().tirar()));
 
         }
+*/
     }
     
 }
