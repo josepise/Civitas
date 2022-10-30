@@ -22,7 +22,7 @@ public class JuegoTexto {
         
         ArrayList<String> jugadores=new ArrayList<>();
         jugadores.add("Benito");
-        //jugadores.add("Potito");
+        jugadores.add("Potito");
         //jugadores.add("OHMR");
         //jugadores.add("nawie");
         

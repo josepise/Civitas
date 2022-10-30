@@ -34,6 +34,7 @@ public class Controlador {
         OperacionJuego accion;
         GestionInmobiliaria gestion;
         Respuesta respues;
+        OperacionInmobiliaria accion_inm;
         
         while(!finJuego)
         {
@@ -47,7 +48,7 @@ public class Controlador {
                 vista.mostrarEventos();
             
             finJuego=juegoModel.finDelJuego();
-            //PASAR_TURNO, AVANZAR, COMPRAR, GESTIONAR;
+            
             if(!finJuego)
             {
                 switch(accion)
@@ -56,30 +57,34 @@ public class Controlador {
                         respues=vista.comprar();
                         
                         if (respues==Respuesta.SI)
-                        {
                             juegoModel.comprar();    
-                        }
+                        
                         juegoModel.siguientePasoCompletado(accion);
                         
                         break;                
                     case GESTIONAR:
-    
-                        gestion=new GestionInmobiliaria(vista.elegirOperacion(),
-                              vista.elegirPropiedad());
+                        accion_inm=vista.elegirOperacion();
                         
-                        switch(gestion.getOperacion())
-                        {
-                            case TERMINAR:
-                                juegoModel.siguientePasoCompletado(accion);
-                                break;
-                            case CONSTRUIR_HOTEL:
-                                juegoModel.construirHotel(gestion.getPropiedad());
-                                break;
-                            case CONSTRUIR_CASA:
-                                juegoModel.construirCasa(gestion.getPropiedad());
-                                break;
+                        if(accion_inm!=OperacionInmobiliaria.TERMINAR)
+                        {    
+                            gestion=new GestionInmobiliaria(accion_inm,
+                                  vista.elegirPropiedad());
+
+                            switch(gestion.getOperacion())
+                            {
+                                
+                                case CONSTRUIR_HOTEL:
+                                    juegoModel.construirHotel(gestion.getPropiedad());
+                                    break;
+                                case CONSTRUIR_CASA:
+                                    juegoModel.construirCasa(gestion.getPropiedad());
+                                    break;
+                            }
                         }
-                        
+                        else
+                        {
+                            juegoModel.siguientePasoCompletado(accion);
+                        }
                         break;        
                 }          
             }
@@ -87,6 +92,5 @@ public class Controlador {
         }
         juegoModel.ranking_publico();
         vista.actualiza();
-        System.out.println(Diario.getInstance().leerEvento());
     }
 }

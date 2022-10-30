@@ -101,6 +101,7 @@ public class VistaTextual implements Vista {
       String cadena;
       Respuesta resp;
       boolean ok=false;
+   
       do{
           System.out.println("¿Desea comprar la calle? Si/No");
           cadena=in.nextLine();

@@ -109,7 +109,7 @@ public class Casilla {
     
     void informe(int iactual, ArrayList<Jugador> todos)
     {
-        String evento="El jugador "+ todos.get(iactual) + "ha caido en la casilla"
+        String evento="El jugador "+ todos.get(iactual) + " ha caido en la casilla"
                       + toString();
         Diario.getInstance().ocurreEvento(evento);
     }
@@ -147,19 +147,21 @@ public class Casilla {
     public String toString()
     {
         String enunciado;
-        System.out.println(propietario);
         
         if (propietario==null)
         {
-            enunciado=nombre+ " Precios:Compra:" + precioCompra +", "
-                   + "Edificar:" + precioEdificar + ", Alquiler base:" 
-                   + precioBaseAlquiler + ", Casas:" + numCasas + ", Hoteles:"
-                   + numHoteles;
+            enunciado= "\n" + "\n" + "Tipo:" + tipo.toString() + "\n"
+                    +"Nombre:" + nombre + "\n" +"Precios: " + "\n"
+                    +"  Compra:" + precioCompra + "\n"
+                    +"  Edificar:" + precioEdificar + "\n"
+                    +"  Alquiler base:" + precioBaseAlquiler + "\n"
+                    +"  Casas:" + numCasas + "\n"
+                    +"  Hoteles:" + numHoteles +"\n";
         }
         else
         { 
-            enunciado="Esta calle tiene propietario con nombre:"
-                    +propietario.getNombre();
+            enunciado="La calle " + nombre + " tiene el propietario " 
+                    +propietario.getNombre() + "\n" ;
            
         }
         
@@ -185,7 +187,6 @@ public class Casilla {
     boolean comprar(Jugador jugador)
     {
        propietario=jugador;
-        System.out.println("Paga Funcion comprar Casilla");
        return (propietario.paga(precioCompra));
     }
     

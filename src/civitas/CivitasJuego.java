@@ -52,10 +52,6 @@ public class CivitasJuego {
     private void inicializaTablero(MazoSorpresas m)
     {
         
-        Casilla inicial = new Casilla("SALIDA");
-        
-        tablero.añadeCasilla(inicial);
-        
         ArrayList<Casilla> casillas = new ArrayList<>();
         
         for(int i = 0; i < 14; i++){
@@ -133,12 +129,13 @@ public class CivitasJuego {
         
     }
     
-    public boolean construirCasa(int ip){
-        
+    public boolean construirCasa(int ip)
+    {
         return jugadores.get(indiceJugadorActual).construirCasa(ip);
     }
     
-    public boolean construirHotel(int ip){
+    public boolean construirHotel(int ip)
+    {
         return jugadores.get(indiceJugadorActual).construirHotel(ip);
 
     }
@@ -166,7 +163,7 @@ public class CivitasJuego {
         ArrayList<Jugador> ranking = new ArrayList<>();
         ranking = jugadores;
         
-        ranking.sort((o1, o2) -> o1.compareTo(o2));
+        ranking.sort((o2, o1) -> o1.compareTo(o2));
         
         return ranking;
     }
@@ -230,9 +227,7 @@ public class CivitasJuego {
         
         Jugador jugadorActual = getJugadorActual();
         int numCasillaActual = jugadorActual.getCasillaActual();
-        System.out.println("Comprando");
         Casilla casilla = tablero.getCasilla(numCasillaActual);
-        System.out.println(casilla.toString());
         boolean res = jugadorActual.comprar(casilla);
         
        return res;

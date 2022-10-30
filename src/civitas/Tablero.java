@@ -12,14 +12,11 @@ import java.util.ArrayList;
  */
 public class Tablero {
     
-    private ArrayList<Casilla> casillas;
+    private ArrayList<Casilla> casillas=new ArrayList<>();
     private boolean porSalida;
     
     Tablero(){
-        
-        casillas = new ArrayList();
-        
-        Casilla Salida = new Casilla( "Salida",0, 0, 0);
+        Casilla Salida = new Casilla( "SALIDA");
         casillas.add(Salida);
         
         porSalida = false;
@@ -28,8 +25,7 @@ public class Tablero {
     private boolean correcto(int numCasilla){
         
         boolean correcto;
-        System.out.println("Num_Casilla  "+ numCasilla );
-        System.out.println(casillas.size());
+
         if(numCasilla >= 0 && numCasilla <= casillas.size())
             correcto = true;
         else correcto = false;

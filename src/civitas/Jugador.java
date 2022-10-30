@@ -21,7 +21,7 @@ public class Jugador implements Comparable<Jugador> {
     private String nombre;
     private boolean puedeComprar;
     private float saldo;
-    private final float SaldoInicial = 7500;
+    private static float SaldoInicial = 7500;
     
     
     private ArrayList<Casilla> propiedades;
@@ -31,7 +31,7 @@ public class Jugador implements Comparable<Jugador> {
         nombre = nom;
         casillaActual = 0;
         puedeComprar = false;
-        saldo = 7500;
+        saldo = SaldoInicial;
         propiedades=new ArrayList<>();
     }
     
@@ -49,7 +49,7 @@ public class Jugador implements Comparable<Jugador> {
     private boolean existeLaPropiedad(int ip)
     {
         
-        return (propiedades.size() <= ip);
+        return (ip < propiedades.size());
         
     }
     
@@ -75,7 +75,6 @@ public class Jugador implements Comparable<Jugador> {
     {
         boolean aux;
         cantidad=cantidad*(-1);
-        System.out.println("Pagando funcion pagar");
         aux = modificaSaldo(cantidad);
         
         return aux;
@@ -99,8 +98,7 @@ public class Jugador implements Comparable<Jugador> {
     boolean modificaSaldo(float cantidad)
     {
         saldo = saldo + cantidad;
-        System.out.println(saldo);
-        Diario.getInstance().ocurreEvento("El saldo de " + nombre + "ha "
+        Diario.getInstance().ocurreEvento("El saldo de " + nombre + " ha "
                 + " cambiado a " + saldo);
         return true;
     }
@@ -117,9 +115,8 @@ public class Jugador implements Comparable<Jugador> {
     boolean puedoGastar(float precio)
     {
         boolean ok=false;
-        System.out.println("El saldo es bolsonaro" + saldo);
-        if(saldo<=precio)
-            ok=true;
+        if(precio<=saldo)         
+            ok=true;    
                     
         return ok;
         
@@ -155,7 +152,7 @@ public class Jugador implements Comparable<Jugador> {
                 result=propiedad.construirCasa(this);
                 
                 Diario.getInstance().ocurreEvento("El jugador"+ nombre +
-                        " construye una casa en la propiedad " + ip);
+                        " construye una casa en la propiedad " + propiedad.getNombre());
             }
            
         }
@@ -182,7 +179,8 @@ public class Jugador implements Comparable<Jugador> {
     @Override
     public String toString()
     {
-        String cadena = "Nombre: " + nombre + " Saldo: " + saldo;
+        String cadena = "\n" + "   Nombre: " + nombre  
+                +"\n" + "   Saldo: " + saldo;
         return cadena;
     }
     
@@ -192,14 +190,14 @@ public class Jugador implements Comparable<Jugador> {
     {
         boolean result=false;
         float precio;
-        System.out.println("Tus muertos Funcion comprar jugador");
+       
         if(puedeComprarCasilla())
         {
             precio=titulo.getPrecioCompra();
-            System.out.println("COMAR Funcion comprar jugador");
+            
             if(puedoGastar(precio))
             {
-                System.out.println("Troncar Funcion comprar jugador");
+                
                 result=titulo.comprar(this);
                 
                 propiedades.add(titulo);
@@ -212,7 +210,7 @@ public class Jugador implements Comparable<Jugador> {
             else
             {
                 Diario.getInstance().ocurreEvento("El jugador "+nombre+
-                        "no tiene saldo para comprar la propiedad "+titulo.getNombre());
+                        " no tiene saldo para comprar la propiedad "+titulo.getNombre());
             }
         }
         
