@@ -20,7 +20,7 @@ public class CivitasJuego {
     private MazoSorpresas mazo;
     private Tablero tablero;
     
-    //Para guardar el nombre de las calles
+    //Para crear las  calles
     private String nombres_calles[]={"Ruiseñor","Colibri","Pelicano","Pingüino",
                                      "Castor","Lemur","Koala","Ballena",
                                      "Delfin","Pollito","Pulpo","Ornitorrinco",
