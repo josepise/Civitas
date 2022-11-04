@@ -6,6 +6,7 @@ package civitas;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 /**
  *
  * @author carlo
@@ -19,9 +20,14 @@ public class CivitasJuego {
     private MazoSorpresas mazo;
     private Tablero tablero;
     
+    //Para crear las  calles
+    private String nombres_calles[]={"Ruiseñor","Colibri","Pelicano","Pingüino",
+                                     "Castor","Lemur","Koala","Ballena",
+                                     "Delfin","Pollito","Pulpo","Ornitorrinco",
+                                     "Hamster", "Hurón"};
+    
     public CivitasJuego(ArrayList<String> nombres, boolean debug)
     {
-        
         jugadores = new ArrayList<>();
         
         for(int i = 0; i < nombres.size(); i++){
@@ -56,8 +62,7 @@ public class CivitasJuego {
         
         for(int i = 0; i < 14; i++){
             
-            String nombre = i+"";
-            Casilla calle = new Casilla(nombre, (i+1)*500, (i+1)*200, (i+1)*250);
+            Casilla calle = new Casilla(nombres_calles[i], (i+1)*500, (i+1)*200, (i+1)*250);
             
             casillas.add(calle);
            
@@ -85,17 +90,17 @@ public class CivitasJuego {
     private void inicializaMazoSorpresas()
     {
         
-        for(int i = 1; i <= 5; i++){
+        for(int i = 1; i <= 6; i++){
             Sorpresa sor = new Sorpresa(TipoSorpresa.PAGARPORCOBRAR, 
-                                        "Pagar por cobrar", i*250);
-            
+                                        "Pagar por cobrar: ", (int) (Math.pow(-1,i)*i*250));
+    
             mazo.alMazo(sor);
             
         }
         
-        for(int i = 1; i <= 5; i++){
+        for(int i = 1; i <= 4; i++){
             Sorpresa sor = new Sorpresa(TipoSorpresa.PORCASAHOTEL, 
-                                        "Pagar por casa y hotel", i*250);
+                                        "Pagar por casa y hotel: ",(int) (Math.pow(-1,i)*i*250));
             
             mazo.alMazo(sor);
             

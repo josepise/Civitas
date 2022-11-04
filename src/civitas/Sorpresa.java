@@ -28,8 +28,13 @@ public class Sorpresa {
 
     private void informe(int actual, ArrayList<Jugador> todos)
     {
-        
-       String cadena = "Se aplico la sopresa "+ tipo +" a " + todos.get(actual);
+       float cantidad_pagar=valor;
+       
+       if(tipo==TipoSorpresa.PORCASAHOTEL)
+           cantidad_pagar=valor*todos.get(actual).cantidadCasasHoteles();
+       
+       String cadena = "Se aplico la sopresa "+ tipo +" a " + todos.get(actual)+  "\n" + 
+                        "de pagar/cobrar " + cantidad_pagar ;
        Diario.getInstance().ocurreEvento(cadena);
         
     }
@@ -45,16 +50,15 @@ public class Sorpresa {
     
     private void aplicarAJugador_pagarCobrar(int actual, ArrayList<Jugador> todos)
     {
-        
         informe(actual, todos);
         todos.get(actual).modificaSaldo(valor);
     }
     
     private void aplicarAJugador_porCasaHotel(int actual, ArrayList<Jugador> todos)
     {
-        
+        float cantidad_pagar=valor*todos.get(actual).cantidadCasasHoteles();
         informe(actual, todos);
-       // todos.get(actual).modificaSaldo(valor*todos.get(actual).cantidadCasasHoteles());
+        todos.get(actual).modificaSaldo(cantidad_pagar);
     }
     
     public String toString()

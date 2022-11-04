@@ -150,13 +150,21 @@ public class Casilla {
         
         if (propietario==null)
         {
-            enunciado= "\n" + "\n" + "Tipo:" + tipo.toString() + "\n"
-                    +"Nombre:" + nombre + "\n" +"Precios: " + "\n"
-                    +"  Compra:" + precioCompra + "\n"
-                    +"  Edificar:" + precioEdificar + "\n"
-                    +"  Alquiler base:" + precioBaseAlquiler + "\n"
-                    +"  Casas:" + numCasas + "\n"
-                    +"  Hoteles:" + numHoteles +"\n";
+            if(tipo==TipoCasilla.CALLE)
+            {
+                enunciado= "\n" + "\n" + "Tipo:" + tipo.toString() + "\n"
+                        +"Nombre:" + nombre + "\n" +"Precios: " + "\n"
+                        +"  Compra:" + precioCompra + "\n"
+                        +"  Edificar:" + precioEdificar + "\n"
+                        +"  Alquiler base:" + precioBaseAlquiler + "\n"
+                        +"  Casas:" + numCasas + "\n"
+                        +"  Hoteles:" + numHoteles +"\n";
+            }
+            else
+            {
+                enunciado= "\n" + "\n" + "Tipo:" + tipo.toString() + "\n";
+            }
+           
         }
         else
         { 
@@ -198,7 +206,7 @@ public class Casilla {
                 recibeJugador_calle(actual,todos);
                 break;
             case SORPRESA:
-                recibeJugador_calle(actual,todos);
+                recibeJugador_sorpresa(actual,todos);
                 break;
             case DESCANSO:
                 informe(actual,todos);

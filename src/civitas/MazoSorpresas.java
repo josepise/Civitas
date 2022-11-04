@@ -52,7 +52,7 @@ public class MazoSorpresas {
     {
         Sorpresa carta;
         
-        if(!barajada && usadas==sorpresas.size())
+        if(!barajada || usadas==sorpresas.size())
         {
             if(!debug)
             {    
