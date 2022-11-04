@@ -39,7 +39,16 @@ public class Jugador implements Comparable<Jugador> {
     {
         return nombre;
     }
-                
+    
+    int cantidadCasasHoteles()
+    {
+        int num_casashoteles=0;
+        
+        for(int i=0; i< propiedades.size(); i++)
+            num_casashoteles+=propiedades.get(i).cantidadCasasHoteles();
+        
+        return num_casashoteles;
+    }
     
     final float getSaldo()
     {
@@ -179,8 +188,8 @@ public class Jugador implements Comparable<Jugador> {
     @Override
     public String toString()
     {
-        String cadena = "\n" + "   Nombre: " + nombre  
-                +"\n" + "   Saldo: " + saldo;
+        String cadena = "\n Nombre: " + nombre  
+                +"\n" + "   Saldo: " + saldo +" \n";
         return cadena;
     }
     
