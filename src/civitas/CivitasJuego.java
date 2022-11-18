@@ -62,7 +62,7 @@ public class CivitasJuego {
         
         for(int i = 0; i < 14; i++){
             
-            Casilla calle = new Casilla(nombres_calles[i], (i+1)*500, (i+1)*200, (i+1)*250);
+            CasillaCalle calle = new CasillaCalle(nombres_calles[i], (i+1)*500, (i+1)*200, (i+1)*250);
             
             casillas.add(calle);
            
@@ -70,7 +70,7 @@ public class CivitasJuego {
         
         for(int i = 1; i <= 4; i++){
             
-                Casilla sor = new Casilla(i*15 +"", m);
+                CasillaSorpresa sor = new CasillaSorpresa(i*15 +"", m);
                 casillas.add(sor);
         }
         
@@ -232,8 +232,7 @@ public class CivitasJuego {
         
         Jugador jugadorActual = getJugadorActual();
         int numCasillaActual = jugadorActual.getCasillaActual();
-        Casilla casilla = tablero.getCasilla(numCasillaActual);
-        boolean res = jugadorActual.comprar(casilla);
+        boolean res = jugadorActual.comprar(((CasillaCalle)tablero.getCasilla(numCasillaActual)));
         
        return res;
         

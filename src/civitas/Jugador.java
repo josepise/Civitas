@@ -24,7 +24,7 @@ public class Jugador implements Comparable<Jugador> {
     private static float SaldoInicial = 7500;
     
     
-    private ArrayList<Casilla> propiedades;
+    private ArrayList<CasillaCalle> propiedades;
     
     
     Jugador(String nom){
@@ -89,7 +89,7 @@ public class Jugador implements Comparable<Jugador> {
         return aux;
     }
     
-    public final ArrayList<Casilla> getPropiedades()
+    public final ArrayList<CasillaCalle> getPropiedades()
     {
         return propiedades;
     }
@@ -153,7 +153,7 @@ public class Jugador implements Comparable<Jugador> {
         
         if(existe)
         {
-            Casilla propiedad=propiedades.get(ip);
+            CasillaCalle propiedad=propiedades.get(ip);
             boolean puedoEdificar=puedoEdificarCasa(propiedad);
             
             if(puedoEdificar)
@@ -195,7 +195,7 @@ public class Jugador implements Comparable<Jugador> {
     
    
     
-    public boolean comprar (Casilla titulo)
+    public boolean comprar (CasillaCalle titulo)
     {
         boolean result=false;
         float precio;
@@ -232,7 +232,7 @@ public class Jugador implements Comparable<Jugador> {
         
         if(existeLaPropiedad(ip))
         {
-            Casilla propiedad=propiedades.get(ip);
+            CasillaCalle propiedad=propiedades.get(ip);
             
             boolean puedoEdificarHotel=puedoEdificarHotel(propiedad);
             
@@ -250,7 +250,7 @@ public class Jugador implements Comparable<Jugador> {
         return result;
     }
 
-    private boolean puedoEdificarCasa(Casilla propiedad)
+    private boolean puedoEdificarCasa(CasillaCalle propiedad)
     {
         boolean puedo=false;
         float precioEdificar=propiedad.getPrecioEdificar();
@@ -263,7 +263,7 @@ public class Jugador implements Comparable<Jugador> {
         return puedo;
     }
     
-    private boolean puedoEdificarHotel(Casilla propiedad)
+    private boolean puedoEdificarHotel(CasillaCalle propiedad)
     {
         boolean puedoEdificarHotel=false;
         
