@@ -35,6 +35,16 @@ public class Jugador implements Comparable<Jugador> {
         propiedades=new ArrayList<>();
     }
     
+    Jugador(Jugador jugador)
+    {
+        nombre=jugador.nombre;
+        casillaActual=jugador.casillaActual;
+        puedeComprar=jugador.puedeComprar;
+        saldo=jugador.saldo;
+        propiedades=jugador.propiedades;
+    }
+
+    
     final String getNombre()
     {
         return nombre;
@@ -278,6 +288,12 @@ public class Jugador implements Comparable<Jugador> {
         return puedoEdificarHotel;
     }
     
+    
+    public void convertir()
+    {
+        Jugador rajoy= new JugadorEspeculador(this);
+        
+    }
     
     
    
