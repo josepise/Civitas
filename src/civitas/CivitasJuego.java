@@ -91,16 +91,14 @@ public class CivitasJuego {
     {
         
         for(int i = 1; i <= 6; i++){
-            Sorpresa sor = new Sorpresa(TipoSorpresa.PAGARPORCOBRAR, 
-                                        "Pagar por cobrar: ", (int) (Math.pow(-1,i)*i*250));
+            Sorpresa sor = new SorpresaPagarCobrar("Pagar por cobrar: ", (int) (Math.pow(-1,i)*i*250));
     
             mazo.alMazo(sor);
             
         }
         
         for(int i = 1; i <= 4; i++){
-            Sorpresa sor = new Sorpresa(TipoSorpresa.PORCASAHOTEL, 
-                                        "Pagar por casa y hotel: ",(int) (Math.pow(-1,i)*i*250));
+            Sorpresa sor = new SorpresaPagarCasaHotel("Pagar por casa y hotel: ",(int) (Math.pow(-1,i)*i*250));
             
             mazo.alMazo(sor);
             
@@ -238,7 +236,7 @@ public class CivitasJuego {
         
     }
     
-    
+ 
     
     
 }

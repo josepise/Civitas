@@ -11,24 +11,21 @@ import java.util.ArrayList;
  * @author carlo
  */
 public class CasillaSorpresa extends Casilla {
-    
-    
+
     private MazoSorpresas mazo;
-    
-    CasillaSorpresa(String nomb, MazoSorpresas maz)
-    {
+
+    CasillaSorpresa(String nomb, MazoSorpresas maz) {
         super(nomb);
-        mazo=maz;
+        mazo = maz;
     }
-    
+
     @Override
-    void recibeJugador (int actual, ArrayList<Jugador> todos)
-    {
-        Sorpresa sorpresa= mazo.siguiente();
-        
+    void recibeJugador(int actual, ArrayList<Jugador> todos) {
+        Sorpresa sorpresa = mazo.siguiente();
+
         informe(actual, todos);
-        
+
         sorpresa.aplicarAJugador(actual, todos);
-        
+
     }
 }

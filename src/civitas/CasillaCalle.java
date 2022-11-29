@@ -181,5 +181,9 @@ public class CasillaCalle extends Casilla{
         return (espropietario);
     }
     
+    public void actualizaPropietarioPorConversion(JugadorEspeculador jugad)
+    {
+        propietario=jugad;
+    }
 }
 

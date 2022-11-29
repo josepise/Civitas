@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class Jugador implements Comparable<Jugador> {
     
-    private static final int CasasMax = 4;
+    static final int CasasMax = 4;
     private static final int CasasPorHotel = 4;
-    private static final int HotelesMax = 4;
+    static final int HotelesMax = 4;
     private static final float PasoPorSalida = 1000;
     
     
@@ -63,6 +63,17 @@ public class Jugador implements Comparable<Jugador> {
     final float getSaldo()
     {
         return saldo;
+    }
+    
+    int casasMax()
+    {
+        return CasasMax;
+    }
+    
+    
+    int hotelMax()
+    {
+        return HotelesMax;
     }
     
     private boolean existeLaPropiedad(int ip)
@@ -265,7 +276,7 @@ public class Jugador implements Comparable<Jugador> {
         boolean puedo=false;
         float precioEdificar=propiedad.getPrecioEdificar();
             
-        if(puedoGastar(precioEdificar) && propiedad.getNumCasas()<CasasMax)
+        if(puedoGastar(precioEdificar) && propiedad.getNumCasas()<casasMax())
         {
             puedo=true;
         }
@@ -279,7 +290,7 @@ public class Jugador implements Comparable<Jugador> {
         
         float precio=propiedad.getPrecioEdificar();
         
-        if(puedoGastar(precio)&& propiedad.getNumHoteles()<HotelesMax
+        if(puedoGastar(precio)&& propiedad.getNumHoteles()<hotelMax()
             && propiedad.getNumCasas()>=CasasPorHotel)
         {
             puedoEdificarHotel=true;
@@ -289,11 +300,13 @@ public class Jugador implements Comparable<Jugador> {
     }
     
     
-    public void convertir()
+    JugadorEspeculador convertir()
     {
-        Jugador rajoy= new JugadorEspeculador(this);
+        JugadorEspeculador rajoy=new JugadorEspeculador(this);
         
+        return(rajoy);
     }
+    
     
     
    
