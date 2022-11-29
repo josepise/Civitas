@@ -24,7 +24,7 @@ public class Jugador implements Comparable<Jugador> {
     private static float SaldoInicial = 7500;
     
     
-    private ArrayList<CasillaCalle> propiedades;
+    ArrayList<CasillaCalle> propiedades;
     
     
     Jugador(String nom){

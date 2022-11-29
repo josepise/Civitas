@@ -4,6 +4,8 @@
  */
 package civitas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jose
@@ -36,13 +38,11 @@ public class JugadorEspeculador extends Jugador {
     
     void actualizaPropiedadesPorConversion(Jugador jug) 
     {
-        for(int i=0; i<jug.getPropiedades().size(); i++)
+        int tope=jug.getPropiedades().size();  
+        for(int i=0; i<tope; i++)
         {
-            getPropiedades().add(jug.getPropiedades().get(i));
             jug.getPropiedades().get(i).actualizaPropietarioPorConversion(this);
-        }
-        
-        jug.getPropiedades().clear();
+        }        
     }
     
     
