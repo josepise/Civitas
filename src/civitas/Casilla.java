@@ -12,7 +12,7 @@ public class Casilla {
         nombre=nomb;
     }
     
-    String getNombre()
+    public String getNombre()
     {
         return (nombre);
     }

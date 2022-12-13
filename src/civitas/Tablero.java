@@ -16,7 +16,7 @@ public class Tablero {
     private boolean porSalida;
     
     Tablero(){
-        Casilla Salida = new Casilla( "SALIDA");
+        Casilla Salida = new Casilla( "Salida");
         casillas.add(Salida);
         
         porSalida = false;
@@ -69,6 +69,11 @@ public class Tablero {
         
          
        return posFinal;
+    }
+    
+    ArrayList<Casilla> getTablero()
+    {
+       return casillas; 
     }
     
     

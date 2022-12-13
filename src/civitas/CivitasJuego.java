@@ -70,7 +70,7 @@ public class CivitasJuego {
         
         for(int i = 1; i <= 4; i++){
             
-                CasillaSorpresa sor = new CasillaSorpresa(i*15 +"", m);
+                CasillaSorpresa sor = new CasillaSorpresa("Sorpresa", m);
                 casillas.add(sor);
         }
         
@@ -176,6 +176,18 @@ public class CivitasJuego {
         return ranking();
     }
     
+    public String ranking_string()
+    {
+        String aux="";
+        
+        for(int i=0; i<ranking().size(); i++)
+        {
+            aux=aux+ranking().get(i).getNombre()+ "\t" + Float.toString(ranking().get(i).getSaldo()) + "\n";
+        }
+        
+        return aux;
+    }
+    
     private void contabilizarPasosPorSalida(){
         
         if(tablero.computarPasoPorSalida()){
@@ -236,6 +248,10 @@ public class CivitasJuego {
         
     }
     
+    public ArrayList<Casilla> casillasTablero()
+    {
+        return tablero.getTablero();
+    }
  
     
     

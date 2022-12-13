@@ -37,22 +37,27 @@ public class CasillaCalle extends Casilla{
     
     
     
-    float getPrecioCompra()
+    public float getPrecioCompra()
     {
         return (precioCompra);
     }
     
-    float getPrecioEdificar()
+    public float getPrecioEdificar()
     {
         return(precioEdificar);
     }
     
-    int getNumCasas()
+    public Jugador getPropietario()
+    {
+        return propietario;
+    }
+    
+    public int getNumCasas()
     {
         return(numCasas);
     }
     
-    int getNumHoteles()
+    public int getNumHoteles()
     {
         return(numHoteles);
     }
@@ -76,7 +81,7 @@ public class CasillaCalle extends Casilla{
     }
     
     
-    float getPrecioAlquilerCompleto()
+    public float getPrecioAlquilerCompleto()
     {
         float alquiler=precioBaseAlquiler*(FACTORALQUILERCALLE+numCasas
                 *FACTORALQUILERCASA+numHoteles*FACTORALQUILERHOTEL);

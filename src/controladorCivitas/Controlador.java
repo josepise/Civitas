@@ -7,7 +7,7 @@ package controladorCivitas;
 import civitas.CivitasJuego;
 import civitas.Diario;
 import civitas.OperacionJuego;
-import vistaTextualCivitas.Vista;
+import GUI.Vista;
 import controladorCivitas.Respuesta;
 import civitas.OperacionInmobiliaria;
 import civitas.GestionInmobiliaria;
@@ -61,7 +61,8 @@ public class Controlador {
                         
                         juegoModel.siguientePasoCompletado(accion);
                         
-                        break;                
+                        break;  
+                        
                     case GESTIONAR:
                         accion_inm=vista.elegirOperacion();
                         
@@ -85,12 +86,14 @@ public class Controlador {
                         {
                             juegoModel.siguientePasoCompletado(accion);
                         }
-                        break;        
-                }          
+                        break;                   
+                }
+                 vista.mostrarEventos();
             }
             
         }
-        juegoModel.ranking_publico();
+        juegoModel.ranking_string();
         vista.actualiza();
     }
+    
 }

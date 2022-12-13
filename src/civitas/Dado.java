@@ -29,12 +29,12 @@ public class Dado {
         return(instance);
     }
     
-    int getUltimoResultado()
+    public int getUltimoResultado()
     {
         return(ultimoResultado);
     }
     
-    int tirar()
+    public int tirar()
     {
         if(debug)
         {
@@ -53,9 +53,14 @@ public class Dado {
         return(random.nextInt(n));
     }
     
-    void setDebug(boolean d)
+    public void setDebug(boolean d)
     {
         debug=d;
+    }
+    
+    public boolean getDebug()
+    {
+        return debug;
     }
     
    

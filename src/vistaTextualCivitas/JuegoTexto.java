@@ -22,9 +22,9 @@ public class JuegoTexto {
         
         ArrayList<String> jugadores=new ArrayList<>();
         jugadores.add("Benito");
-        //jugadores.add("Potito");
-        //jugadores.add("OHMR");
-        //jugadores.add("nawie");
+        jugadores.add("Potito");
+        jugadores.add("OHMR");
+        jugadores.add("nawie");
         
        
         CivitasJuego juego=new CivitasJuego(jugadores,true);

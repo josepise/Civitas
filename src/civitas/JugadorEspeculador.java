@@ -29,6 +29,12 @@ public class JugadorEspeculador extends Jugador {
         return CasaMaxEspeculador;
     }
     
+    @Override
+    public String esEspeculador()
+    {
+        return "Si";
+    }
+    
     
     @Override
     int hotelMax()

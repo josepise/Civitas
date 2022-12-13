@@ -45,7 +45,7 @@ public class Jugador implements Comparable<Jugador> {
     }
 
     
-    final String getNombre()
+    public final String getNombre()
     {
         return nombre;
     }
@@ -60,7 +60,7 @@ public class Jugador implements Comparable<Jugador> {
         return num_casashoteles;
     }
     
-    final float getSaldo()
+    public final float getSaldo()
     {
         return saldo;
     }
@@ -97,7 +97,7 @@ public class Jugador implements Comparable<Jugador> {
         return puedeComprar;
     }
     
-    int getCasillaActual() {
+    public int getCasillaActual() {
         return casillaActual;
     }
     
@@ -307,7 +307,10 @@ public class Jugador implements Comparable<Jugador> {
         return(rajoy);
     }
     
-    
+    public String esEspeculador()
+    {
+        return "No";
+    }
     
    
 }

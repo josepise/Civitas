@@ -1,5 +1,6 @@
 package vistaTextualCivitas;
 
+import GUI.Vista;
 import civitas.Casilla;
 import civitas.CivitasJuego;
 import civitas.CivitasJuego;
