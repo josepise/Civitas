@@ -91,7 +91,6 @@ public class JugadorPanel extends javax.swing.JPanel {
         propiedadPanel.setMaximumSize(new java.awt.Dimension(500, 6666666));
         propiedadPanel.setMinimumSize(new java.awt.Dimension(350, 350));
         propiedadPanel.setName(""); // NOI18N
-        propiedadPanel.setLayout(new javax.swing.BoxLayout(propiedadPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -113,7 +112,7 @@ public class JugadorPanel extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addGap(5, 5, 5)
                         .addComponent(CuadroEspeculador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

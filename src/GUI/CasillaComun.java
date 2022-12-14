@@ -18,6 +18,7 @@ public class CasillaComun extends javax.swing.JPanel {
      */
     public CasillaComun() {
         initComponents();
+       // CasillaNombre.setOpaque(false);
     }
 
     
@@ -25,8 +26,10 @@ public class CasillaComun extends javax.swing.JPanel {
     {
         casilla=otro;
         
-        CasillaNombre.setText(casilla.getNombre());
         
+            CasillaNombre.setText(casilla.getNombre());
+        
+        setVisible(true);
         repaint();
         revalidate();
     }
@@ -41,10 +44,16 @@ public class CasillaComun extends javax.swing.JPanel {
 
         CasillaNombre = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 3));
         setPreferredSize(new java.awt.Dimension(100, 100));
 
-        CasillaNombre.setText("jTextField1");
+        CasillaNombre.setEditable(false);
+        CasillaNombre.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        CasillaNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CasillaNombre.setText("Casilla");
+        CasillaNombre.setToolTipText("");
+        CasillaNombre.setBorder(null);
         CasillaNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CasillaNombreActionPerformed(evt);
@@ -65,7 +74,7 @@ public class CasillaComun extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(CasillaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
