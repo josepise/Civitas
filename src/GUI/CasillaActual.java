@@ -31,7 +31,7 @@ public class CasillaActual extends javax.swing.JPanel {
         {
             if(((CasillaCalle)casilla).getPropietario()!=null)
                 CasillaPropietario.setText(((CasillaCalle)casilla).getPropietario().getNombre());
-                
+            
             CasillaEdificar.setText(Float.toString(((CasillaCalle)casilla).getPrecioEdificar()));
             CasillaAlquiler.setText(Float.toString(((CasillaCalle)casilla).getPrecioAlquilerCompleto()));
             CasillaCompra.setText(Float.toString(((CasillaCalle)casilla).getPrecioCompra()));
@@ -86,7 +86,7 @@ public class CasillaActual extends javax.swing.JPanel {
         jLabel7.setText("Edificar:");
 
         CasillaNombre.setEditable(false);
-        CasillaNombre.setText("jTextField1");
+        CasillaNombre.setText("Propiedad");
 
         CasillaPropietario.setEditable(false);
         CasillaPropietario.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N

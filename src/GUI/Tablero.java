@@ -5,6 +5,7 @@
 package GUI;
 
 import civitas.Casilla;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -14,36 +15,57 @@ import java.util.HashSet;
  */
 public class Tablero extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Tablero
-     */
+    ArrayList<GUI.CasillaComun> casillas=new ArrayList<>();
     public Tablero() {
         initComponents();
+        casillas.add(casillaComun1);
+        casillas.add(casillaComun2);
+        casillas.add(casillaComun3);
+        casillas.add(casillaComun4);
+        casillas.add(casillaComun5);
+        casillas.add(casillaComun6);
+        casillas.add(casillaComun7);
+        casillas.add(casillaComun8);
+        casillas.add(casillaComun9);
+        casillas.add(casillaComun10);
+        casillas.add(casillaComun11);
+        casillas.add(casillaComun12);
+        casillas.add(casillaComun13);
+        casillas.add(casillaComun14);
+        casillas.add(casillaComun15);
+        casillas.add(casillaComun16);
+        casillas.add(casillaComun17);
+        casillas.add(casillaComun18);
+        casillas.add(casillaComun19);
+        casillas.add(casillaComun20);  
+        int r=1;
+        int g=170;
+        int b=205;
+        for(int i=0; i< casillas.size(); i++)
+        {   
+            if(r+20>51)
+            {
+                r=1;
+                g=170;
+                b=205;
+            }
+            else
+            {
+                r+=10;
+                g+=10;
+                b+=10;
+            }
+            Color nuevo=new Color(r,g,b);
+            casillas.get(i).setBackground(nuevo);
+        }
     }
     
+
     public void setTablero(ArrayList<Casilla> casillas)
     {
-          
-        casillaComun1.setCasilla(casillas.get(0));
-        casillaComun2.setCasilla(casillas.get(1));
-        casillaComun3.setCasilla(casillas.get(2));
-        casillaComun4.setCasilla(casillas.get(3));
-        casillaComun5.setCasilla(casillas.get(4));
-        casillaComun6.setCasilla(casillas.get(5));
-        casillaComun7.setCasilla(casillas.get(6));
-        casillaComun8.setCasilla(casillas.get(7));
-        casillaComun9.setCasilla(casillas.get(8));
-        casillaComun10.setCasilla(casillas.get(9));
-        casillaComun11.setCasilla(casillas.get(10));
-        casillaComun12.setCasilla(casillas.get(11));
-        casillaComun13.setCasilla(casillas.get(12));
-        casillaComun14.setCasilla(casillas.get(13));
-        casillaComun15.setCasilla(casillas.get(14));
-        casillaComun16.setCasilla(casillas.get(15));
-        casillaComun17.setCasilla(casillas.get(16));
-        casillaComun18.setCasilla(casillas.get(17));
-        casillaComun19.setCasilla(casillas.get(18));
-        casillaComun20.setCasilla(casillas.get(19));
+     
+        for(int i=0; i<this.casillas.size(); i++)
+            this.casillas.get(i).setCasilla(casillas.get(i));
         
         repaint();
         revalidate();
@@ -55,7 +77,38 @@ public class Tablero extends javax.swing.JPanel {
         casillaActual1.setCasilla(otro);
         
     }
-
+    
+    
+    public void encenderLuz(int indice)
+    {
+        
+        casillas.get(indice).setBackground(Color.red);
+        int r=1;
+        int g=170;
+        int b=205;
+        for(int i=0; i<this.casillas.size(); i++) 
+        {
+            if(i!=indice)
+            {
+                if(r+20>51)
+                {
+                    r=1;
+                    g=170;
+                    b=205;
+                }
+                else
+                {
+                    r+=10;
+                    g+=10;
+                    b+=10;
+                }
+                Color nuevo=new Color(r,g,b);
+                casillas.get(i).setBackground(nuevo);
+            }
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,6 +139,11 @@ public class Tablero extends javax.swing.JPanel {
         casillaComun19 = new GUI.CasillaComun();
         casillaComun20 = new GUI.CasillaComun();
         casillaActual1 = new GUI.CasillaActual();
+
+        setBackground(new java.awt.Color(255, 204, 102));
+
+        casillaActual1.setBackground(new java.awt.Color(255, 102, 102));
+        casillaActual1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 16));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,7 +183,7 @@ public class Tablero extends javax.swing.JPanel {
                             .addComponent(casillaComun17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(casillaComun18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(casillaComun19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(71, 71, 71)
+                        .addGap(62, 62, 62)
                         .addComponent(casillaActual1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +229,7 @@ public class Tablero extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(casillaComun16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(53, 53, 53)
                         .addComponent(casillaActual1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +237,7 @@ public class Tablero extends javax.swing.JPanel {
                             .addComponent(casillaComun13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(casillaComun14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(casillaComun15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -54,7 +54,9 @@ public class GestionarDialog extends javax.swing.JDialog {
         ButtonRealizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(300, 300));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Gestiones");
 
         ListaGestiones.setModel(new javax.swing.AbstractListModel<String>() {
@@ -70,9 +72,9 @@ public class GestionarDialog extends javax.swing.JDialog {
         jScrollPane1.setViewportView(ListaGestiones);
 
         ButtonRealizar.setText("Realizar");
-        ButtonRealizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ButtonRealizarMouseClicked(evt);
+        ButtonRealizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonRealizarActionPerformed(evt);
             }
         });
 
@@ -83,26 +85,25 @@ public class GestionarDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(100, Short.MAX_VALUE)
-                        .addComponent(ButtonRealizar)))
-                .addGap(228, 228, 228))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ButtonRealizar)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(ButtonRealizar)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,9 +113,9 @@ public class GestionarDialog extends javax.swing.JDialog {
         gestionElegida= ListaGestiones.getSelectedIndex();
     }//GEN-LAST:event_ListaGestionesMouseClicked
 
-    private void ButtonRealizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonRealizarMouseClicked
-       dispose();
-    }//GEN-LAST:event_ButtonRealizarMouseClicked
+    private void ButtonRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRealizarActionPerformed
+        dispose();
+    }//GEN-LAST:event_ButtonRealizarActionPerformed
 
 
   

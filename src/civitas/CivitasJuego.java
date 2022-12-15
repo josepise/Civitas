@@ -23,7 +23,7 @@ public class CivitasJuego {
     //Para crear las  calles
     private String nombres_calles[]={"Ruiseñor","Colibri","Pelicano","Pingüino",
                                      "Castor","Lemur","Koala","Ballena",
-                                     "Delfin","Pollito","Pulpo","Ornitorrinco",
+                                     "Delfin","Pollito","Pulpo","Serpiente",
                                      "Hamster", "Hurón"};
     
     public CivitasJuego(ArrayList<String> nombres, boolean debug)

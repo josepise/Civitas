@@ -88,6 +88,7 @@ public class JugadorPanel extends javax.swing.JPanel {
         CuadroEspeculador.setText("Si/No");
         CuadroEspeculador.setToolTipText("");
 
+        propiedadPanel.setBackground(new java.awt.Color(255, 255, 255));
         propiedadPanel.setLayout(new javax.swing.BoxLayout(propiedadPanel, javax.swing.BoxLayout.Y_AXIS));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

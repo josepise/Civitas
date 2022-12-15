@@ -25,7 +25,6 @@ public class DiarioDialog extends javax.swing.JDialog {
         
         while(diario.eventosPendientes())
         {
-            System.out.println("evento");
             aux=aux+diario.leerEvento()+"\n";
         }
         CuadroEvento.setText(aux);

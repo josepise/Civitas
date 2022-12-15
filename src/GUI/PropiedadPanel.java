@@ -45,18 +45,24 @@ public class PropiedadPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         CuadroHoteles = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 204, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Nombre de la Propiedad");
         add(jLabel1);
 
         CuadroNombreProp.setText("jTextField1");
         add(CuadroNombreProp);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Nº Casas");
         add(jLabel2);
 
         CuadroCasas.setText("jTextField2");
         add(CuadroCasas);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Nº Hoteles");
         add(jLabel3);
 

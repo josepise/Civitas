@@ -28,7 +28,7 @@ public class TestP5 {
 
         array=nombres.getNombres();
         
-        CivitasJuego juego=new CivitasJuego(array,true);        
+        CivitasJuego juego=new CivitasJuego(array,false);        
         Controlador controlador=new Controlador(juego,vista);
         
         vista.setCivitasJuego(juego);
