@@ -76,6 +76,22 @@ public class Tablero {
        return casillas; 
     }
     
+    public ArrayList<Casilla> getCasillasPropietarios()
+    {
+        ArrayList<Casilla> aux=new ArrayList<>();
+        CasillaCalle tmp=new CasillaCalle();
+        for(Casilla n: casillas)
+        {
+            if(n.getClass().getSimpleName()==tmp.getClass().getSimpleName())
+            {
+                if(((CasillaCalle)n).tienePropietario())
+                    aux.add(n);
+            }
+        }
+        
+        return aux;
+        
+    }
     
     
     

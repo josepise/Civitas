@@ -114,6 +114,15 @@ public class CivitasJuego {
         return jugadores.get(indiceJugadorActual);
     }
     
+    public int getIndiceJugadorActual()
+    {
+        return indiceJugadorActual;
+    }
+    
+    public Tablero getTablero()
+    {
+        return tablero;
+    }
     private void pasarTurno()
     {
         if(indiceJugadorActual < jugadores.size()-1)

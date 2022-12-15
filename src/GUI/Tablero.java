@@ -58,6 +58,18 @@ public class Tablero extends javax.swing.JPanel {
             Color nuevo=new Color(r,g,b);
             casillas.get(i).setBackground(nuevo);
         }
+        
+        
+        for(GUI.CasillaComun n: casillas)
+        {
+            for(int i=0; i<4; i++)
+                n.quitarFicha(i);
+        }
+        
+        casillas.get(0).ponerFicha(0);
+        casillas.get(0).ponerFicha(1);
+        casillas.get(0).ponerFicha(2);
+        casillas.get(0).ponerFicha(3);
     }
     
 

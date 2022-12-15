@@ -5,6 +5,7 @@
 package GUI;
 
 import civitas.Casilla;
+import civitas.CasillaCalle;
 import civitas.OperacionInmobiliaria;
 import civitas.OperacionJuego;
 import controladorCivitas.Respuesta;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 public class CivitasView extends javax.swing.JFrame implements Vista {
     
     private CivitasJuego juego;
+    private boolean principio=true;
     /**
      * Creates new form CivitasView
      */
@@ -55,6 +57,7 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
         jPanel1 = new javax.swing.JPanel();
         CivitasLabel = new javax.swing.JLabel();
         Tablero = new GUI.Tablero();
+        casillasPropietarios1 = new GUI.CasillasPropietarios();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 51));
@@ -98,24 +101,25 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(OperacionJuegoLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(CuadroOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(CuadroJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(190, 190, 190)
                         .addComponent(Tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
+                        .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelRanking)
-                            .addComponent(PanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(casillasPropietarios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelRanking)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(OperacionJuegoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(CuadroOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,10 +138,13 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
                             .addComponent(CuadroOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(LabelRanking)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(PanelRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(564, 564, 564))))
+                        .addGap(30, 30, 30)
+                        .addComponent(casillasPropietarios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -147,15 +154,17 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
    
     
     @Override
-    public void actualiza() {
+    public void actualiza() {     
         
         LabelRanking.setVisible(false);
         CuadroRanking.setVisible(false);
         PanelRanking.setVisible(false);
         
+        actualizaFichas();
         Tablero.encenderLuz(juego.getJugadorActual().getCasillaActual());
         Tablero.setCasilla(juego.casillasTablero().get(juego.getJugadorActual().getCasillaActual()));
         CuadroJugador.setJugador(juego.getJugadorActual());
+        mostrarPropiedades();
         
         if(juego.finDelJuego())
         {
@@ -213,7 +222,6 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
               operacion=OperacionInmobiliaria.TERMINAR;
               break;  
         }
-        System.out.println(aux);
         return operacion;
     }
 
@@ -222,7 +230,6 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
         PropiedadDialog aux=new PropiedadDialog(this,true,juego.getJugadorActual());
         //System.out.println(aux.getPropiedad());
         int e=aux.getPropiedad();
-        System.out.println(e);
        
         return e;
     }
@@ -244,6 +251,27 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
             DiarioDialog diarioD= new DiarioDialog(this);
         }
     }
+    
+    
+    public void mostrarPropiedades()
+    {    
+        casillasPropietarios1.borrarTodo();
+        for(Casilla n: juego.getTablero().getCasillasPropietarios())
+          casillasPropietarios1.setPropiedades((CasillaCalle)n); 
+    }
+    
+    public void actualizaFichas()
+    {
+        
+        for(CasillaComun n : Tablero.casillas)
+        {
+            n.quitarFicha(juego.getIndiceJugadorActual());
+        }
+        
+        Tablero.casillas.get(juego.getJugadorActual().getCasillaActual()).ponerFicha(juego.getIndiceJugadorActual());
+       
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CivitasLabel;
@@ -254,6 +282,7 @@ public class CivitasView extends javax.swing.JFrame implements Vista {
     private javax.swing.JLabel OperacionJuegoLabel;
     private javax.swing.JScrollPane PanelRanking;
     private GUI.Tablero Tablero;
+    private GUI.CasillasPropietarios casillasPropietarios1;
     private javax.swing.JPanel jPanel1;
     private GUI.TestP5 testP51;
     // End of variables declaration//GEN-END:variables
