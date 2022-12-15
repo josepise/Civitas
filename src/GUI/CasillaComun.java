@@ -18,7 +18,7 @@ public class CasillaComun extends javax.swing.JPanel {
      */
     public CasillaComun() {
         initComponents();
-       // CasillaNombre.setOpaque(false);
+       CasillaNombre.setOpaque(false);
     }
 
     

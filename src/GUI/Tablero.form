@@ -16,25 +16,157 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-              <Component id="casillaComun1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="242" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="casillaComun1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="casillaComun16" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="casillaComun15" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun14" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun13" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun12" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="casillaComun11" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="casillaComun20" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun17" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun18" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun19" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="casillaActual1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="casillaComun7" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun10" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun9" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun8" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="casillaComun1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="188" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="casillaComun6" min="-2" max="-2" attributes="0"/>
+                  <Component id="casillaComun5" min="-2" max="-2" attributes="0"/>
+                  <Component id="casillaComun4" min="-2" max="-2" attributes="0"/>
+                  <Component id="casillaComun3" min="-2" max="-2" attributes="0"/>
+                  <Component id="casillaComun2" min="-2" max="-2" attributes="0"/>
+                  <Component id="casillaComun1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="casillaComun7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun11" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="casillaComun20" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun19" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun18" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun17" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="casillaComun16" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="casillaActual1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="casillaComun12" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun13" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun14" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="casillaComun15" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="128" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="GUI.CasillaComun" name="casillaComun1">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun2">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun3">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun4">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun5">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun6">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun7">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun8">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun9">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun10">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun11">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun12">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun13">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun14">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun15">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun16">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun17">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun18">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun19">
+    </Component>
+    <Component class="GUI.CasillaComun" name="casillaComun20">
+    </Component>
+    <Component class="GUI.CasillaActual" name="casillaActual1">
     </Component>
   </SubComponents>
 </Form>
