@@ -21,6 +21,11 @@ public class CasillaCalle extends Casilla{
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
     
+    CasillaCalle()
+    {
+       super("");
+       numCasas = 0;
+    }
     
     CasillaCalle(String unNombre, float unPrecioCompra,
             float unPrecioEdificar, float unPrecioAlquilerBase)
@@ -190,5 +195,7 @@ public class CasillaCalle extends Casilla{
     {
         propietario=jugad;
     }
+    
+    
 }
 

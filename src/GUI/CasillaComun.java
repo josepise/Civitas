@@ -5,6 +5,8 @@
 package GUI;
 
 import civitas.Casilla;
+import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,25 +15,47 @@ import civitas.Casilla;
 public class CasillaComun extends javax.swing.JPanel {
 
     private Casilla casilla;
+    private ArrayList<javax.swing.JTextField> array=new ArrayList<>();
+    private ArrayList<Color> array_colores=new ArrayList<>();
     /**
      * Creates new form CasillaComun
      */
     public CasillaComun() {
         initComponents();
-       CasillaNombre.setOpaque(false);
+        array.add(jTextField1);
+        array.add(jTextField2);
+        array.add(jTextField3);
+        array.add(jTextField4);
+        array_colores.add(Color.red);
+        array_colores.add(Color.blue);
+        array_colores.add(Color.yellow);
+        array_colores.add(Color.green);
+        
+        CasillaNombre.setOpaque(false);
     }
 
     
     public void setCasilla(Casilla otro)
     {
         casilla=otro;
-        
-        
-            CasillaNombre.setText(casilla.getNombre());
+     
+        CasillaNombre.setText(casilla.getNombre());
         
         setVisible(true);
         repaint();
         revalidate();
+    }
+    
+    public void ponerFicha(int indice)
+    {
+        array.get(indice).setBackground(array_colores.get(indice));
+        array.get(indice).setVisible(true);
+    }
+    
+    public void quitarFicha(int indice)
+    {
+        array.get(indice).setBackground(Color.white);
+        array.get(indice).setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +67,10 @@ public class CasillaComun extends javax.swing.JPanel {
     private void initComponents() {
 
         CasillaNombre = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 3));
@@ -60,21 +88,66 @@ public class CasillaComun extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setEditable(false);
+        jTextField1.setMaximumSize(new java.awt.Dimension(20, 20));
+        jTextField1.setMinimumSize(new java.awt.Dimension(20, 20));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setEditable(false);
+        jTextField2.setMaximumSize(new java.awt.Dimension(20, 20));
+        jTextField2.setMinimumSize(new java.awt.Dimension(20, 20));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setMaximumSize(new java.awt.Dimension(20, 20));
+        jTextField3.setMinimumSize(new java.awt.Dimension(20, 20));
+        jTextField3.setPreferredSize(new java.awt.Dimension(20, 20));
+
+        jTextField4.setMaximumSize(new java.awt.Dimension(20, 20));
+        jTextField4.setMinimumSize(new java.awt.Dimension(20, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CasillaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(CasillaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(9, 9, 9)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CasillaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -82,8 +155,20 @@ public class CasillaComun extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_CasillaNombreActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CasillaNombre;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
